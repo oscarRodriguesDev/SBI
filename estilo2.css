@@ -1,4 +1,8 @@
 /*estilo css*/
+.menu{
+
+	display:none;
+}
 
 .all{
     margin-left: auto;
