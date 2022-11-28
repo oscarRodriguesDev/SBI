@@ -3,17 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Inventary</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="estilo.css">
-	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
+	<link rel="stylesheet" type="text/css" href="newstyle.css">
+ 
+	<link rel="stylesheet" href="newstyle2.css" media="screen and (max-width: 480px)" />
+
+	<title>SBI</title>
 </head>
 <body>
-	<div class =  "menu">
-			<ul>
-			<li id ="open">☰</li>
-			<li id = "closed">׀׀׀ </li>
-			<li><a href="index.html">Home</a></li>
-			<li>Controle de Estoque</li>
+
+	<!--Barra superior onde fica o titulo do programa-->
+	<header class = "barsup">
+		<h1><span>S</span>istema de <span>B</span>ilhetagem 
+			<span>I</span>nteligente</h1>
+	</header>
+<nav class ="menu"><span>MENU</span>
+	<!--opções de menu -->
+<div class =  "opções">
+		<ul>
+			<li >Home</li>
+			<li id="select">Controle de Estoque</a></li>
 			<li>Controle de Catraca</li>
 			<li>Manutenção de Telemetria</li>
 			<li>Manutenção de Cameras</li>
@@ -23,14 +31,44 @@
 			<li>Acompanhamento</li>
 		</ul>
 	</div>
-	<div class = "all">
-<h2 class =  "title">Controle de Estoque</h2>
-<form id="controle">
+	<!--Fim das opções do menu-->
 
-	<div class ="campos">
-	<label class = "label">Equipamento</label>
-	<label class = "label">Numero de Serie</label>
-	<label class = "label">Data</label>
+</nav>
+
+<!---->
+
+<!--menu lateral com informações importantes-->
+<section class =  "info">
+	<span id = "salve">BEM VINDO AO SBI</span>
+	<p style="font-weight: bold;">O que deseja fazer ?</p>
+	<ul>
+		<!--Opções são exclusivas da pagina controle de estoque-->
+		<li>no definition</li>
+		<li>no definition</li>
+		<li>no definition</li>
+		<!--adcionar mais perguntas ao longo do desenvolvimento-->
+
+	</ul>
+</section>
+<!--fim das informações importantes-->
+
+
+<!--seção area de trabalho-->
+<section class = "desktop">
+<header class = "bar_desk">
+<h1>Controle de Estoque</h1>
+</header>
+
+<section class="formulario1">
+	
+<!--fim da seção de area de trabalho-->
+
+<form>
+
+	<div>
+	<label id = "label1">Equipamento</label>
+	<label id = "label2">Numero de Serie</label>
+	<label id = "label3">Data</label>
 	<br>
 <select name="equipamentos" id="eqpms" form=" controle">
   <option value="">Painel Motorista</option>
@@ -49,15 +87,22 @@
   <option value="">Maquina Cielo</option>
 </select>
 
-	<input type="text" name="">
-	<input type="date" name="">
+	<span><input type="text" id="serial"></span>
+	<span><input type="date" id="data"></span>
 </div>
 <div class= "buttons">
-	<input type="button" name="" value =  "Regitrar Entrada">
-	<input type="button" name="" value =  "Regitrar Saída">
+	<input type="button" id="entrada" value =  "Regitrar Entrada">
+	<input type="button" id="saida" value =  "Regitrar Saída">
 </div>
 </form>
-</form>
-</div>
+</section>
+
+<!--seção do rodape-->
+</section>
+<footer class = "rodape">
+	<p>Todos os direitos reservados &#169</p>
+</footer>
+	</section>
+	<!--fim da seção do rodape-->
 </body>
 </html>

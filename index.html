@@ -3,17 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Inventary</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="estilo.css">
-	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
+	<link rel="stylesheet" type="text/css" href="newstyle.css">
+	<title>SBI</title>
 </head>
 <body>
-	<div class =  "menu">
+
+	<!--Barra superior onde fica o titulo do programa-->
+	<header class = "barsup">
+		<h1><span>S</span>istema de <span>B</span>ilhetagem 
+			<span>I</span>nteligente</h1>
+	</header>
+<nav class ="menu"><span>MENU</span>
+	<!--opções de menu -->
+<div class =  "opções">
 		<ul>
-			<li id ="open">☰</li>
-			<li id = "closed">׀׀׀ </li>
-			<li>Home</li>
-			<li><a href="Controle_de_estoque.html">Controle de Estoque</a></li>
+			<li id="home">Home</li>
+			<li>Controle de Estoque</a></li>
 			<li>Controle de Catraca</li>
 			<li>Manutenção de Telemetria</li>
 			<li>Manutenção de Cameras</li>
@@ -23,6 +28,72 @@
 			<li>Acompanhamento</li>
 		</ul>
 	</div>
-	
+	<!--Fim das opções do menu-->
+
+</nav>
+
+<!---->
+
+<!-- painel com informações relevantes referentes aos elementos 
+gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas, inconsistencias de dados, de acordo com a tela em que o usuario se encontra, na tela home o usuario devera ver sugestoes de uso, caso não logado, incentivo a fazer loguin, oferecer o produto completo-->
+<section class =  "info">
+	<span id = "salve">BEM VINDO AO SBI</span>
+	<p style="font-weight: bold;">O que deseja fazer ?</p>
+	<ul>
+		<!--Opções são exclusivas da pagina home, caso o usuario ainda não 
+			tenha acesso ao sistema, se estiver deslogado por exemplo-->
+		<li>O que é o SBI ?</li>
+		<li>Como usar o sistema ?</li>
+		<li>Quero adquirir o SBI!</li>
+		<!--adcionar mais perguntas ao longo do desenvolvimento-->
+
+	</ul>
+</section>
+
+
+<!--cabeçalho da area de trabalho-->
+<section class = "desktop">
+<header class = "bar_desk">
+<h1>HOME</h1>
+</header>
+
+
+<!--espaço para fotos e noticias diversas-->
+<article class= "news">
+	<h3>fotos ou noticias</h3>
+	<-Aqui vai um slide dos serviços realizados pela Bilhetagem->
+</article>
+
+
+<!-- local para anexar avisos diversos-->
+<article class  = "warn">
+	<h3>AVISOS</h3>
+	<p>veja aqui os principais avisos relacionados ao sistema</p>
+</article>
+
+</section>
+<!--rodape do site-->
+<footer class = "rodape">
+	<p>Todos os direitos reservados &#169</p>
+</footer>
+<section class = "loguin_routine">
+<div class = "protection">proteção</div>
+<!--Tela de loguin para que o usuario possa usar 100% do sistema
+		ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
+
+	<section class  = "loguin">
+	<span id="loguin_title">Loguin</span><br>
+	<span id="loguin_words">User</span><br>
+	<span > <input type="text" id = "user"> </span><br>
+	<span id="loguin_words">Password</span><br>
+	<span> <input type="Password" id="senha"> </span><br>
+	<span> <input type="button" value="Entrar"></span><br>
+	<!--Botão para sair vai ser um "x"-->
+
+	<span id = "loguin_rec"><a href="#">Recuperar dados de acesso</a>
+	</span><br>
+</section>
+	</section>
+
 </body>
 </html>

@@ -1,72 +1,216 @@
-/*estilo css*/
-.menu{
+/*estilos css*/
 
+/*menu lateral*/
+
+.menu{
+	
 	display:none;
 }
 
-.all{
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid black;
-    width:420px;
-     justify-content: center;
-	align-items: center;
 
+/*fim das opções do menu*/
 
+/*cabeçalho*/
+.barsup{
+
+display:none;
 }
-.title{
-	font-size: 100%;
-	font-weight: bold;
-	margin-left: 30%;
-	margin-bottom: 1%;
+
+
+
+/*rodape*/
+ .rodape{
+
+ 	display: none;
+ }
+
+ 
+ 
+
+ /*informações*/
+ .info{
+ 
+ 	display:none;
+ }
+
+ 
+ /*area de trabalho*/
+
+.desktop{
+	position: fixed;
+	background: url("");
+	background-size:100%;
+	opacity: 0.85;
+	background-color:#white;
+	width:61.9%;
+ 	top:12%;
+ 	left:16%;
+ 	height:79.7%;
+ 	text-align:center;
+
+ 	
+}
+.bar_desk{
+	position:fixed;
+	background-color:black;
+	color:white;
+	width:101%;
+	height:9%;
+	top:11.8%;
+	left:-0.5%;
+	right:20%;
+}
+
+
+
+/*fim dos estilos da area de trabalho*/
+
+/*estilos da telinha de loguin*/
+.loguin_routine{
+
+	display:none;
+}
+.protection{
+	position:fixed;
+	background-color: black;
+	opacity: 0.3;
+	width:100%;
+	height:100%;
+	
+}
+.loguin{
+	position:fixed;
+	color:blue;
+	text-align: center;
+	border:solid 2px blue;
+	background-color: #E0FFFF;
+	padding:0.3%;
+	left:40%;
+	top:35%;
+	border-radius: 1%;
 	
 }
 
-input{
-font-size:10px;
+#loguin_title{
+color:black;
+border-radius: 1%;
+   background-image: linear-gradient(grey,white,grey);
+   position:fixed;
+   border-bottom: 1px solid black;
+   left:40.15%;
+   width:13.6%;
+   font-weight: bold;
+   bottom: 61.6%;
+
 }
 
-.campos{
-  
-	border: 1px solid black;
-	font-size:10px;
-	width:90%;
+#loguin_words{
+	position:fixed;
+   left:40.2%;
+   width:13.6%;
+   font-weight: bold;
+}
+#loguin_rec{
+	position:fixed;
+   left:43.1%;
+   width:13.6%;
+   bottom: 42%;
+   font-size:55%;
+   font-weight: bold;
+}
+
+/*fim dos estilos da telinha de loguin*/
+
+/*estilo do formulario do controle de estoque*/
+
+
+.formulario1 label{
+    position:fixed;
+	color:red;
+	font-size: 140%;
+	left:1%;
+	border-bottom:1px solid white;
+	background-color: gray;
+	width:97%;
+	height:7%;
+	padding-top:6%;
+
 	
 }
-#eqpms{
-	font-size: 10px;
+.formulario1 #label1{
+	
+	top:25%;
+	border-radius:7%;
+
 }
-.label{
-	/*gerar uma separação entre os labels*/
-	padding-left: 10%;
-	padding-right: 2%;
+
+.formulario1 #label2{
+	top:42.9%;
+	border-radius:7%;
+
+	
+}
+
+.formulario1 #label3{
+
+	top:61.7%;
+	border-radius:7%;
+	
+}
+.formulario1 #eqpms{
+	position:fixed;
+	font-size: 120%;
+	left:1%;
+	top:35.5%;
+	width:97%;
+	height:7%;
+	border-radius:7%;
+}
+
+.formulario1 #serial{
+	position:fixed;
+	font-size: 120%;
+	left:1%;
+	top:53.5%;
+	width:95.5%;
+	height:7%;
+	border-radius:7%;
+	
+
+}
+.formulario1 #data{
+	position:fixed;
+	font-size: 120%;
+	left:1%;
+	top:72.3%;
+	width:95.5%;
+	height:7%;
+	border-radius:7%;
+
+}
+.formulario1 .buttons{
+	position:fixed;
+	top:85%;
+	left:11%;
+}
+.buttons #entrada{
+	font-size:130%;
+	border-radius:10%;
+}
+
+.buttons #saida{
+	font-size:130%;
+	border-radius:10%;
+}
+
+/*fim do estilo do formulario do controle de estoque*/
+
+/*body*/
+body{
+
+	text-align: center;
+	position:fixed;
+	background-color:#ADD8E6;
 	margin:auto;
-	font-weight: bold;
-	font-size: 10px;
-	justify-content: center;
-	align-items: center;
-}
-
-.buttons{
-
-	width: 500px; 
-	height:1px;
-    margin-left: auto;
-    margin-right: auto; 
-    padding-top: 25px;
-    padding-bottom: 10%;
-    padding-left: 25%;
-    padding-right: 1%;
-}
-html {
-   margin-right: auto;
-   height: 50%;
-    padding-top:60%;
-    
-    
-}
-body {
-    margin-left: auto;
-    margin-right: auto;
-
+	
 }

@@ -1,124 +1,283 @@
-/*estilo css*/
+/*estilos css*/
+
+/*menu lateral*/
 
 .menu{
-
-background-color: black;
-width:15%;
-
-position:auto;
+	position:fixed;
+	background-color:#87CEEB;
+	width:15.9%;
+	height:91.7%;
+	margin-left:auto;
+	margin-right: auto;
 }
-
-#open{
-	color:red;
-	border:none;
+.menu #select{
+	background-color: white;
+	color:black;
+	box-shadow: none;
+	text-align: center;
 }
-
-#closed{
-	color:red;
-	border:none;
-	display:none;
-}
-
-
-.menu ul{
-	list-style:none;
+.menu span{
+	font-size:150%;
+	background-color:black;
+	opacity: 0.5;
 	color:white;
-	padding-left:1%;
-	opacity: 0.8;
+	width:150%;
+	padding-left:33%;
+	padding-right:34%;
+	box-shadow: 2px 5px 5px grey;
+}
+
+/*opções do menu*/
+.opções ul{
+list-style:none;
+color:#008000;
+font-weight: bold;
+padding-left:1%;
+
+
 
 }
-ul li{
+
+.opções{
+width:100%;
+margin-left:auto;
+text-align:left;
+
+}
+.opções ul li{
 	
 	border-bottom:1px solid white ;
-	padding:3%;
-}
-ul li:not(#open):hover{
-	background-color: blue;
-	opacity: 1;
+	padding-top:6%;
+	padding-bottom:6%;
+	box-shadow: 2px 5px 5px grey;
+
+
 }
 
-a{
+.opções ul li:hover{
+	color:#ADD8E6;
+	background-color:#4682B4;
+	border-bottom:1px solid white ;
+	padding-top:6%;
+	padding-bottom:6%;
+	box-shadow: 2px 5px 5px white;
+}
+
+/*fim das opções do menu*/
+
+/*cabeçalho*/
+.barsup{
+position:fixed;
+background-image: linear-gradient(blue, black);
+opacity: 0.6;
+width:84%;
+height:11.7%;
+left:16%;
+}
+
+.barsup h1{
+	position:fixed;
 	color:white;
-	text-decoration:none ;
+	font-size:200%;
+	left:30%;
+	top:-2%;
 }
-
-.all{
-
-	background-color: white;
-	opacity: 0.8;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom:500%;
-    border: 1px solid black;
-    width:550px;
-    justify-content: center;
-	align-items: center;
-
-
-
-
-}
-
-.title{
-	
-	
+.barsup span{
 	font-size: 200%;
-	margin-left: 30%;
-	margin-bottom: 1%;
-	padding-bottom: 10%;
-	
 }
 
-.campos{
-	
+/*rodape*/
+ .rodape{
+ 	position:fixed;
+ 	background-color: blue;
+ 	top: 92%;
+ 	width:100%;
+ 	height: 10%;
+ 	  background-image: linear-gradient(to right,#B0C4DE,#4682B4,#B0C4DE);
+ 	
+ }
 
-	border: 1px solid black;
-	width: 500px; 
-	height:1px;
-    margin-left: auto;
-    margin-right: auto; 
-    padding-top: 5%;
-    padding-bottom: 10%;
-    padding-left: 5%;
-    padding-right: 1%;
-    margin-top:auto;
+ .rodape p{
+ 	position:fixed;
+ 	color:white;
+ 	font-size: 67%;
+ 	top:96.4%;
+ 	left:44.3%;
+ }
 
-}
-.label{
-	/*gerar uma separação entre os labels*/
-	padding-left: 10%;
-	padding-right: 2;
-	margin:auto;
+ /*informações*/
+ .info{
+ 	position:fixed;
+ 	background-color: white;
+ 	left:78%;
+ 	width:22%;
+ 	top:12%;
+ 	height:79.7%;
+ }
+
+ .info #salve{
+    position:fixed;
+ 	background-image: linear-gradient(#B0C4DE, grey);
+ 	color:white;
+ 	left:78%;
+ 	width:22%;
+ 
+ }
+.info ul{
+	list-style:none;
+	color:black;
 	font-weight: bold;
+	padding-left:1%;
 }
-
-.buttons{
-
-	width: 500px; 
-	height:1px;
-    margin-left: auto;
-    margin-right: auto; 
-    padding-top: 40px;
-    padding-bottom: 10%;
-    padding-left: 25%;
-    padding-right: 1%;
-}
-html {
-    height: 50%;
-    width:100%;
-    padding-top:0%;
-  
+.info ul li{
+	text-align: left;
+	border-bottom:1px solid white ;
+	padding-top:6%;
+	padding-bottom:6%;
+	box-shadow: 2px 5px 5px grey;
 
 }
+.info ul li:hover{
+	background-color: grey;
+	color:white;
+	text-align: left;
+	border-bottom:1px solid white ;
+	padding-top:6%;
+	padding-bottom:6%;
+	
 
-body {
-	background: url("res/gradient.jpg") ;
+}
 
-    min-height: 100%;
-    Margin-left:auto;
-    margin-right:auto%;
-    margin-top:auto;
-    margin-bottom:auto;
-  
-    
+ /*area de trabalho*/
+
+.desktop{
+	position: fixed;
+	background: url("res/transito.jpg") no-repeat;
+	background-size:100%;
+	opacity: 0.85;
+	background-color:#FAEBD7;
+	width:61.9%;
+ 	top:12%;
+ 	left:16%;
+ 	height:79.7%;
+ 	text-align:center;
+
+ 	
+}
+.bar_desk{
+	position:fixed;
+	background-color:black;
+	color:white;
+	width:61.9%;
+	height:9%;
+	top:11.8%;
+	left:16%;
+	opacity:0.8 ;
+	
+
+}
+
+.news{
+
+	position:fixed;
+	background-color:black;
+	color:white;
+	width:61.9%;
+	height:40%;
+	top:21%;
+	left:16%;
+	opacity: 0.8;
+	
+
+}
+
+.warn{
+	position:fixed;
+	background-color:black;
+	color:white;
+	width:61.9%;
+	height:30.6%;
+	top:61.1%;
+	left:16%;
+	opacity: 0.8;
+}
+/*fim dos estilos da area de trabalho*/
+
+/*estilos da telinha de loguin*/
+.loguin_routine{
+
+	display:none;
+}
+.protection{
+	position:fixed;
+	background-color: black;
+	opacity: 0.3;
+	width:100%;
+	height:100%;
+	
+}
+.loguin{
+	position:fixed;
+	color:blue;
+	text-align: center;
+	border:solid 2px blue;
+	background-color: #E0FFFF;
+	padding:0.3%;
+	left:40%;
+	top:35%;
+	border-radius: 1%;
+	
+}
+
+#loguin_title{
+color:black;
+border-radius: 1%;
+   background-image: linear-gradient(grey,white,grey);
+   position:fixed;
+   border-bottom: 1px solid black;
+   left:40.15%;
+   width:13.6%;
+   font-weight: bold;
+   bottom: 61.6%;
+
+}
+
+#loguin_words{
+	position:fixed;
+   left:40.2%;
+   width:13.6%;
+   font-weight: bold;
+}
+#loguin_rec{
+	position:fixed;
+   left:43.1%;
+   width:13.6%;
+   bottom: 42%;
+   font-size:55%;
+   font-weight: bold;
+}
+
+/*fim dos estilos da telinha de loguin*/
+
+/*estilo do formulario do controle de estoque*/
+
+.formulario1{
+	position:fixed;
+	background-color: white;
+	top:40%;
+	left:31%;
+	border:1px solid white;
+	color:black;
+}
+
+/*fim do estilo do formulario do controle de estoque*/
+
+/*body*/
+body{
+	
+	background-color:#ffffff;
+	text-align: center;
+	position:fixed;
+	margin:auto;
+	
 }
