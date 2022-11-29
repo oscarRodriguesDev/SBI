@@ -10,3 +10,22 @@ back
 -pagina de controle de estoque foi separada da pagina home
 -primeiros links foram definidos
 -menus ja com estilos css foram implementados
+
+28/11/2022:
+pagina index e pagina controle de estoque foram atualizadas, melhorando a visualização para dispositivos moveis e deixando a visualização para desktops mais moderna user interface, as paginas de estilo foram atualizadas, o aplicativo para controle de estoque( parte visual foi finalizado) agora vou começar a implementar as solução com javascript
+- melhorar o cabeçalho da pagina, as letras estão ultrapassando o espaço determinado pra elas
+- estilizar os links  na barra de links à esquerda, tirar o sublinhado e controlar as cores
+
+29/11/2022:
+a função para limpeza do formulario na pagina de controle de estoque foi criada, assim quando o usuario adcionar ou remover um equipamento, os campos serão limpos para que ele possa passar à proxima operação.
+os links foram estilizados, no aplicativo o javascript esta em pleno funcionamento.
+como proximo estagio vou começar a fazer a integração com o banco de dados, gerando a persistencia de dados necessarias para o funcionamento do sistema, caso tudo ocorra como esperado entre duas ou trez semananas o aplicativo para estoque estará em funcionamento.
+- tambem estarei implementando a opção de visualização do estoque, porem essa opção será visivel apenas para usuarios desktop
+
+
+//O que esta por vir
+-ao termino do app de controle de estoque estarei implementando o controle de catracas que visa gerenciar a forma como a informação sobre valor, acertos, e pedidos de manutenções das mesmas serão visualizados, alem disso 
+esta previsto a criação de um app para anotação da catraca que ficara disponivel tambem no sistema dessa forma tirando a necessidade de anotar e logo a seguir ter que passar para o sistema
+
+-os carros que rodaram deverão ser importados pelo sistema de bilhetagem, dessa forma o catraqueiro so vai se preocupar em anotar as catracas
+

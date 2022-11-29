@@ -10,12 +10,26 @@ function clear_all(decisão) {
  var text = document.getElementById("serial");
  var serial = text.value
 
- var teste = document.getElementById("data");
-    var StringData =teste.value; 
+ var data = document.getElementById("data");
+    var StringData =data.value; 
   if( decisão=="entrada"){
 	alert(equipamento +  " foi adcionado com sucesso!")
 }else{
   alert(equipamento + " foi retirado do estoque")
 }
-	document.location.reload(true);
+	
+	select.selectedIndex = 0//define o painel inicial
+	text.value = ""
+	/*tenho a data atual caso eu desista de pegar pelo formulario*/
+	const hoje = new Date();
+	var dia =  hoje.getDate()
+    var mes =  hoje.getMonth()+1
+    var ano =  hoje.getFullYear()
+	
+	alert(dia)
+	alert(mes)
+	alert(ano)
+	data.value = "dd/mm/aaaa"
+	
+
 }
