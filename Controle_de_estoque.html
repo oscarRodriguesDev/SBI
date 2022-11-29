@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
- 
+	<script type="text/javascript" src="systembi.js"></script>
 	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
 
 	<title>SBI</title>
@@ -20,15 +20,15 @@
 	<!--opções de menu -->
 <div class =  "opções">
 		<ul>
-			<li >Home</li>
+			<li><a href = "index.html">Home</a></li>
 			<li id="select">Controle de Estoque</a></li>
-			<li>Controle de Catraca</li>
-			<li>Manutenção de Telemetria</li>
-			<li>Manutenção de Cameras</li>
-			<li>Paineis de motorista</li>
-			<li>Revisão Geral</li>
-			<li>Serviços Realizados</li>
-			<li>Acompanhamento</li>
+			<li><a href = "#">Controle de Catraca</a></li>
+			<li><a href = "#">Manutenção de Telemetria</a></li>
+			<li><a href = "#">Manutenção de Cameras</a></li>
+			<li><a href = "#">Paineis de motorista</a></li>
+			<li><a href = "#">Revisão Geral</a></li>
+			<li><a href = "#">Serviços Realizados</a></li>
+			<li><a href = "#">Acompanhamento</a></li>
 		</ul>
 	</div>
 	<!--Fim das opções do menu-->
@@ -65,11 +65,12 @@
 
 <form>
 
-	<div>
+	
 	<label id = "label1">Equipamento</label>
 	<label id = "label2">Numero de Serie</label>
 	<label id = "label3">Data</label>
 	<br>
+	
 <select name="equipamentos" id="eqpms" form=" controle">
   <option value="">Painel Motorista</option>
   <option value="">Connection</option>
@@ -89,10 +90,10 @@
 
 	<span><input type="text" id="serial"></span>
 	<span><input type="date" id="data"></span>
-</div>
+
 <div class= "buttons">
-	<input type="button" id="entrada" value =  "Regitrar Entrada">
-	<input type="button" id="saida" value =  "Regitrar Saída">
+	<input type="button" id="entrada" value =  "Regitrar Entrada" onclick="clear_all('entrada')">
+	<input type="button" id="saida" value =  "Regitrar Saída" onclick="clear_all('saida')">
 </div>
 </form>
 </section>

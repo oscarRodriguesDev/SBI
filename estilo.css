@@ -4,15 +4,15 @@
 
 .menu{
 	position:fixed;
-	background-color:#87CEEB;
+	background-color:#4682B4;
 	width:15.9%;
 	height:91.7%;
 	margin-left:auto;
 	margin-right: auto;
 }
 .menu #select{
-	background-color: white;
-	color:black;
+	background-color:#778899;
+	color:white;
 	box-shadow: none;
 	text-align: center;
 }
@@ -43,7 +43,9 @@ width:100%;
 margin-left:auto;
 text-align:left;
 
+
 }
+
 .opções ul li{
 	
 	border-bottom:1px solid white ;
@@ -53,9 +55,28 @@ text-align:left;
 
 
 }
+/*opções dos links do menu lateral*/
+
+.opções ul li a{
+text-decoration:none;
+color:white;
+}
+.opções ul li a:hover{
+text-decoration:none;
+color:red;
+}
+.opções ul li a:visited{
+text-decoration:none;
+color:white;
+}
+
+.opções ul li a:active{
+text-decoration:none;
+color:red;
+}
+/*fim das opções dos links do menu lateral*/
 
 .opções ul li:hover{
-	color:#ADD8E6;
 	background-color:#4682B4;
 	border-bottom:1px solid white ;
 	padding-top:6%;
@@ -264,11 +285,20 @@ border-radius: 1%;
 .formulario1{
 	position:fixed;
 	background-color: white;
-	top:40%;
+	top:30%;
 	left:31%;
-	border:1px solid white;
+   padding-bottom: 15%;
+	border:1px solid black;
 	color:black;
 }
+
+.buttons{
+	position: fixed;
+	bottom: 29%;
+	left:40%;
+}
+
+
 
 /*fim do estilo do formulario do controle de estoque*/
 
