@@ -52,15 +52,21 @@ display:none;
 }
 .bar_desk{
 	position:fixed;
-	background-color:black;
-	color:white;
-	width:101%;
-	height:9%;
-	top:11.8%;
-	left:-0.5%;
-	right:20%;
+	//background-color:#A52A2A	;
+	 background:linear-gradient( -0.1turn, #FF4500, #191970, #48D1CC, #FF4500);
+	 border:3px solid yelhow;
+	 color:white;
+	 width:101%;
+	 height:9%;
+	 top:11.8%;
+	 left:-0.5%;
+	 right:20%;
 }
 
+.bar_desk #tit_form{
+	font-size: 200%;
+	font-weight: bold;
+}
 
 
 /*fim dos estilos da area de trabalho*/
@@ -126,27 +132,31 @@ border-radius: 1%;
 
 .formulario1 label{
     position:fixed;
-	color:red;
-	font-size: 140%;
+	color:#F0FFFF;
+	font-size: 200%;
+	font-weight: bold;
 	left:1%;
-	border-bottom:1px solid white;
-	background-color: gray;
+	border:2px solid white;
+ background:linear-gradient( -0.2turn, grey, #191970, #48D1CC, #7B68EE );
 	width:97%;
 	height:7%;
 	padding-top:6%;
+	margin-top:auto;
 
 	
 }
 .formulario1 #label1{
 	
 	top:25%;
-	border-radius:7%;
+	border-radius:3%;
+	
 
 }
 
 .formulario1 #label2{
 	top:42.9%;
-	border-radius:7%;
+	border-radius:3%;
+	
 
 	
 }
@@ -154,7 +164,8 @@ border-radius: 1%;
 .formulario1 #label3{
 
 	top:61.7%;
-	border-radius:7%;
+	border-radius:3%;
+	
 	
 }
 .formulario1 #eqpms{
@@ -164,7 +175,8 @@ border-radius: 1%;
 	top:35.5%;
 	width:97%;
 	height:7%;
-	border-radius:7%;
+	border-radius:3%;
+	
 }
 
 .formulario1 #serial{
@@ -174,7 +186,8 @@ border-radius: 1%;
 	top:53.5%;
 	width:95.5%;
 	height:7%;
-	border-radius:7%;
+	border-radius:3%;
+
 	
 
 }
@@ -185,7 +198,8 @@ border-radius: 1%;
 	top:72.3%;
 	width:95.5%;
 	height:7%;
-	border-radius:7%;
+	border-radius:3%;
+
 
 }
 .formulario1 .buttons{
@@ -195,22 +209,20 @@ border-radius: 1%;
 }
 .buttons #entrada{
 	font-size:130%;
-	border-radius:10%;
+	border-radius:3%;
 }
 
 .buttons #saida{
 	font-size:130%;
-	border-radius:10%;
+	border-radius:3%;
 }
 
 /*fim do estilo do formulario do controle de estoque*/
 
 /*body*/
 body{
-
-	text-align: center;
 	position:fixed;
-	background-color:#ADD8E6;
-	margin:auto;
+	text-align: center;
+	background-color:black;
 	
 }
