@@ -209,11 +209,13 @@ border-radius: 1%;
 }
 .buttons #entrada{
 	font-size:130%;
+	left:10%;
 	border-radius:3%;
 }
 
 .buttons #saida{
 	font-size:130%;
+	left:50%;
 	border-radius:3%;
 }
 

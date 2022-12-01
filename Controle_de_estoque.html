@@ -43,9 +43,9 @@
 	<p style="font-weight: bold;">O que deseja fazer ?</p>
 	<ul>
 		<!--Opções são exclusivas da pagina controle de estoque-->
-		<li>no definition</li>
-		<li>no definition</li>
-		<li>no definition</li>
+		<li onclick="acessar_estoque('estoque')">Estoque</li>
+		<li>Historico de retiradas</li>
+		<li onclick = "acessar_controle('.formulario1')">Entrada</li>
 		<!--adcionar mais perguntas ao longo do desenvolvimento-->
 
 	</ul>
@@ -65,12 +65,11 @@
 
 <form>
 
-	
 	<label id = "label1">Equipamento</label>
 	<label id = "label2">Numero de Serie</label>
 	<label id = "label3">Data</label>
 	<br>
-	
+	<span class =  "campos">
 <select name="equipamentos" id="eqpms" form=" controle">
   <option value="">Painel Motorista</option>
   <option value="">Connection</option>
@@ -95,8 +94,66 @@
 	<input type="button" id="entrada" value =  "Regitrar Entrada" onclick="clear_all('entrada')">
 	<input type="button" id="saida" value =  "Regitrar Saída" onclick="clear_all('saida')">
 </div>
+</span>
 </form>
 </section>
+
+<!--seção do estoque armazenado-->
+<section id =  "estoque">
+	<header id = "cabeçalho">
+		<h2>Seu Estoque</h2>
+	</header>
+	<p>Seu estoque atualizado aparecerá aqui---></p>
+	<span id = "conteudo_estoque">
+		<!--As linhas abaixo serão preenchidas dinamicamente por uma tabela -->
+	asdf <br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+	asdf<br>
+</span>
+
+
+
+</section>
+<!--fim da seção do estoque armazenado-->
 
 <!--seção do rodape-->
 </section>
