@@ -389,7 +389,7 @@ position:fixed;
 	text-align: left;
 	overflow-y: scroll;
 	position:fixed;
-	background-color: white;
+	background-color:white;
 	left:20%;
 	top:23%;
 	height:60%;
@@ -397,20 +397,28 @@ position:fixed;
 	display:none;
 }
 
-#estoque span{
-	
-}
-#tabela_banco{
+#tabela_estoque{
 	border:1px solid black;
 }
-#tabela_banco th{
+#tabela_estoque tr{
+	/*border:1px solid black;*/
+	padding-left:auto;
+
+}
+#tabela_estoque td{
 	border:1px solid black;
-	margin-left:100px;
+	font-weight: bold;
+	font-size: 80%;
+	width:10%;
 }
-#tabela_banco tr{
-	padding:10%;
-	
+#tabela_estoque th{
+	background-color: #778899;
+	color:#ffffff;
+	border:1px solid black;
+	font-weight: bold;
 }
+
+
 /*fim dos estilos da tela de estoque*/
 
 /*body*/

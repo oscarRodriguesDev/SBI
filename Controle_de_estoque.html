@@ -11,7 +11,7 @@
 	<title>SBI</title>
 </head>
 
-<body>
+<body onload="leitura_data()">
 	<!--Barra superior onde fica o titulo do programa-->
 	<header class="barsup">
 		<h1><span>S</span>istema de <span>B</span>ilhetagem
@@ -93,8 +93,8 @@
 					<span><input type="date" id="data"></span>
 
 					<div class="buttons">
-						<input type="button" id="entrada" value="Regitrar Entrada" onclick='pega_data("entrada")')">
-						<input type="button" id="saida" value="Regitrar Saída" onclick='pega_data("Saída")'>
+						<input type="button" id="entrada" value="Regitrar Entrada" onclick="pega_data('Entrada')">
+						<input type="button" id="saida" value="Regitrar Saída" onclick="pega_data('Saida')">
 					</div>
 				</span>
 			</form>

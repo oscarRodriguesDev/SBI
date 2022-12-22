@@ -8,7 +8,9 @@ function ver_event() {
 
 
 var message = []
+
 lista_banco =[]
+
 
 /*Todas a configuração necessario para que o firebase funcione*/
 const firebaseConfig = {
@@ -56,9 +58,12 @@ function pega_data(rotina) { //se é entrada ou saida
 function save_equipamento(maq, ser, dat, reg, tipo) {
   leitura_data()
   let status =lista_banco.length
+ 
 
    var newMessageRef = bank_enter.push();
    var eqm =  [maq,ser,dat,reg,tipo]
+   
+ 
   if(status>0){
       newMessageRef.set(
          eqm
@@ -68,10 +73,25 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
        head_generator(['equipamento','Serial','Data','Responsavel','Transação'],maq,ser,dat,reg,tipo)
       
       }
+      if(tipo=='Entrada'){
+
+         //mostrar mensagem de entrada de equipamento
+         alert(maq +' foi adcionado ao estoque com sucesso por ' + reg)
+         clear_all(tipo)
+      }else{
+         //mostrar mensagem de saida de equipamento
+         alert(maq +' foi retirado do estoque com sucesso por ' + reg)
+         clear_all(tipo)
+      }
+     
    } 
 
 /*Fim da função para salvar dados no firebase*/
 
+
+
+
+/*Função para salvar o cabeçalho da tabela no banco de dados*/
 function head_generator(heads,maq,ser,dat,reg,tipo) {
    var eqm =  [maq,ser,dat,reg,tipo]
    alert('Seu espaço de estoque ainda não foi criado, mas não se preocupe estaremos criando para você agora!')
@@ -83,17 +103,21 @@ function head_generator(heads,maq,ser,dat,reg,tipo) {
        save_equipamento(maq,ser,dat,reg,tipo)
        
 }
+/*fim da função que cria o cabeçalho da tabela no banco de dados*/
+
 
 
 
 
 /*Função para leitura de dados no firebase*/
 function leitura_data() {
-   lista_banco=[]
+
+   lista_banco = []
    bank_enter.on('child_added', function (snapshot) { 
-      lista_banco.push(snapshot.val());
+   lista_banco.push(snapshot.val());
+  
    });
-   
+ 
 }
 /*Fim da função para leitura de dados no firebase*/
 
@@ -113,14 +137,13 @@ function apresentarData(dados) {
 
 
 
-
+setTimeout(acessar_estoque, 1000);
 
 
 /*Função que permite  a apresentação dos dados na tela do usuario*/
 function acessar_estoque(classe) {
-  lista_banco = []
-   leitura_data()
    apresentarData(lista_banco)
+   lista_banco = []
    estoque = document.getElementById(classe).style;//estoque
    controle = document.querySelector('.formulario1').style;
    estoque.display = 'block'
@@ -157,12 +180,6 @@ function clear_all(decisão) {
    var serial = text.value
    var data = document.getElementById("data");
    var StringData = data.value;
-   if (decisão == "entrada") {
-      alert(equipamento + " foi adcionado com sucesso por " + matricula)
-   } else {
-      matricula = prompt("Para finalizar digite sua matricula:")
-      alert(equipamento + " foi retirado com sucesso por " + matricula)
-   }
    select.selectedIndex = 0//define o painel inicial
    text.value = ""
    /*tenho a data atual caso eu desista de pegar pelo formulario*/
@@ -194,5 +211,8 @@ function criarTabela(conteudo) {
   }
   tabela.appendChild(thead);
   tabela.appendChild(tbody);
+  tabela.setAttribute('id','tabela_estoque')
+
+  
   return tabela;
 }
