@@ -400,6 +400,17 @@ position:fixed;
 #estoque span{
 	
 }
+#tabela_banco{
+	border:1px solid black;
+}
+#tabela_banco th{
+	border:1px solid black;
+	margin-left:100px;
+}
+#tabela_banco tr{
+	padding:10%;
+	
+}
 /*fim dos estilos da tela de estoque*/
 
 /*body*/
