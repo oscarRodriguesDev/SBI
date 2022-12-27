@@ -4,7 +4,7 @@
 
 .menu{
 	position:fixed;
-	//background-color:#4682B4;
+	background-color:#4682B4;
 	width:15.9%;
 	height:91.7%;
 	margin-left:auto;
@@ -397,8 +397,10 @@ position:fixed;
 	display:none;
 }
 
+
 #tabela_estoque{
 	border:1px solid black;
+	position: absolute;
 }
 #tabela_estoque tr{
 	/*border:1px solid black;*/
@@ -406,18 +408,18 @@ position:fixed;
 
 }
 #tabela_estoque td{
+	
 	border:1px solid black;
 	font-weight: bold;
 	font-size: 80%;
 	width:10%;
 }
 #tabela_estoque th{
-	background-color: #778899;
-	color:#ffffff;
+	background-color: #B0C4DE;
+	color:black;
 	border:1px solid black;
-	font-weight: bold;
+	font-size: 80%;
 }
-
 
 /*fim dos estilos da tela de estoque*/
 
@@ -425,7 +427,7 @@ position:fixed;
 body{
 	
 	background-color:#ffffff;
-	text-align: center;
+	text-align:center;
 	position:fixed;
 	margin:auto;
 	

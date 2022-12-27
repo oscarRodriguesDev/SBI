@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
@@ -12,6 +13,7 @@
 </head>
 
 <body onload="leitura_data()">
+<!--body onload="atualizar('estoque')"-->
 	<!--Barra superior onde fica o titulo do programa-->
 	<header class="barsup">
 		<h1><span>S</span>istema de <span>B</span>ilhetagem
@@ -47,9 +49,11 @@
 			<!--Opções são exclusivas da pagina controle de estoque-->
 			<li onclick="acessar_estoque('estoque')">Estoque</li>
 			<li>Historico de retiradas</li>
+			<li>Historico de entradas</li>
+			<li>Totais</li>
 			<li onclick="acessar_controle('.formulario1')">Entrada</li>
 			<!--adcionar mais perguntas ao longo do desenvolvimento-->
-			<li onclick="leitura_data()">mostrando conteudo no console</li>
+	
 		</ul>
 	</section>
 	<!--fim das informações importantes-->
@@ -89,8 +93,9 @@
 						<option value="">Maquina Cielo</option>
 					</select>
 
-					<span><input type="text" id="serial"></span>
-					<span><input type="date" id="data"></span>
+					<span><input type="text" id="serial" placehoder ='Numero'></span>
+					<span><input type="date" id="data"  ></span>
+					
 
 					<div class="buttons">
 						<input type="button" id="entrada" value="Regitrar Entrada" onclick="pega_data('Entrada')">
@@ -102,10 +107,6 @@
 
 		<!--seção do estoque armazenado-->
 		<section id="estoque">
-			<header id="cabeçalho">
-				<h2>Seu Estoque</h2>
-			</header>
-			<p>Seu estoque atualizado aparecerá aqui---></p>
 			<span id="conteudo_estoque">
 				
 			</span>
