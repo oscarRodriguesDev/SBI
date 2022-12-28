@@ -1,13 +1,14 @@
 /*Função de teste para ver se os elementos estão respondendo a eventos*/
-function ver_event() {
-   alert('escutando eventos')
+function default_event() {
+   alert('Este recurso ainda não está disponivel!')
 }
 /*fim da função de teste de eventos*/
 
 
 
 var message = []
-lista_banco = []
+var lista_banco = [] //lista no estoque
+
 
 /*Elementos necessarios para apresentação de dados do banco*/
 var span = document.getElementById('conteudo_estoque').style
@@ -30,7 +31,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 var bank_enter = firebase.database()
-   .ref('inventary');
+   .ref('Estoque Bilhetagem Serramar');
 /*Fim das configurações do firebase*/
 
 
