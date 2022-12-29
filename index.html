@@ -6,6 +6,7 @@
 
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 		<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
+		<script src="systembi.js"></script>
 
 	<title>SBI</title>
 </head>
@@ -25,13 +26,13 @@
 		<ul>
 			<li id="select"><a href = "index.html">Home</a></li>
 			<li><a href= "Controle_de_estoque.html">Controle de Estoque</a></li>
-			<li><a href = "#">Controle de Catraca</a></li>
-			<li><a href = "#">Manutenção de Telemetria</a></li>
-			<li><a href = "#">Manutenção de Cameras</a></li>
-			<li><a href = "#">Paineis de motorista</a></li>
-			<li><a href = "#">Revisão Geral</a></li>
-			<li><a href = "#">Serviços Realizados</a></li>
-			<li><a href = "#">Acompanhamento</a></li>
+			<li onclick="default_event()"><a href = "#">Controle de Catraca</a></li>
+			<li onclick="default_event()"><a href = "#">Manutenção de Telemetria</a></li>
+			<li onclick="default_event()"><a href = "#">Manutenção de Cameras</a></li>
+			<li onclick="default_event()"><a href = "#">Paineis de motorista</a></li>
+			<li onclick="default_event()"><a href = "#">Revisão Geral</a></li>
+			<li onclick="default_event()"><a href = "#">Serviços Realizados</a></li>
+			<li onclick="default_event()"><a href = "#">Acompanhamento</a></li>
 		</ul>
 	</div>
 	<!--Fim das opções do menu-->
@@ -48,9 +49,9 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 	<ul>
 		<!--Opções são exclusivas da pagina home, caso o usuario ainda não 
 			tenha acesso ao sistema, se estiver deslogado por exemplo-->
-		<li>O que é o SBI ?</li>
-		<li>Como usar o sistema ?</li>
-		<li>Quero adquirir o SBI!</li>
+		<li onclick="default_event()">O que é o SBI ?</li>
+		<li onclick="default_event()">Como usar o sistema ?</li>
+		<li onclick="default_event()">Quero adquirir o SBI!</li>
 		<!--adcionar mais perguntas ao longo do desenvolvimento-->
 
 	</ul>
@@ -81,7 +82,12 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 <!--rodape do site-->
 <footer class = "rodape">
 	<p>Todos os direitos reservados &#169</p>
+	<div id = 'version'><p>Versão 1.0.0 beta</p></div>
 </footer>
+
+<!--cria uma rotina de loguin obrigatoria quando o usuario tentar realizar uma leitura de dados-->
+<script src="systembi_loguin.js"></script> <!--script especifico para a rotina de loguin-->
+<span id="sugest_loguin" onclick = "chamar_loguin()">Logar Para ter total acesso?</span>
 <section class = "loguin_routine">
 <div class = "protection">proteção</div>
 <!--Tela de loguin para que o usuario possa usar 100% do sistema
@@ -93,13 +99,15 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 	<span > <input type="text" id = "user"> </span><br>
 	<span id="loguin_words">Password</span><br>
 	<span> <input type="Password" id="senha"> </span><br>
-	<span> <input type="button" value="Entrar"></span><br>
+	<span> <input type="button" value="Logar" onclick ="logar()"></span>
+	<span> <input type="button" value="Depois" onclick ="cancelar_loguin()"></span><br>
 	<!--Botão para sair vai ser um "x"-->
 
 	<span id = "loguin_rec"><a href="#">Recuperar dados de acesso</a>
 	</span><br>
 </section>
 	</section>
+	<!--aqui termina a rotina obrigatoria de loguin-->
 
 </body>
 </html>

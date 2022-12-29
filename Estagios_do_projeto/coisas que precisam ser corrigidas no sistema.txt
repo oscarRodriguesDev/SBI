@@ -1,0 +1,20 @@
+Coisas necessarias para a primeria entrega do sbi
+
+1- implementar forma de loguin para definir como os usuarios vão acessar o sistema(feito)
+
+#unir o sistema de loguin ao sistema de autentificação do firebase
+
+2 impedir dados de serem gravados com valores null
+
+3- implementar rotina de criação de novos equipamentos, mudar a forma atual que os equipamentos são adcionados diretamente na pagina
+
+4- pensar forma de deixar o arquivo .js inacessivel a qualquer um
+
+5 implementar as visualizações de estoque
+
+6- implemtar as opções "o que deseja fazer na tela home do sistema"
+
+7 versionar o programa(feito)
+
+8 - visual do aplicativo movel não está legal
+

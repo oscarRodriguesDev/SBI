@@ -133,35 +133,31 @@ border-radius: 1%;
 .formulario1 label{
     position:fixed;
 	color:#F0FFFF;
-	font-size: 200%;
+	font-size: 100%;
 	font-weight: bold;
 	left:1%;
 	border:2px solid white;
- background:linear-gradient( -0.2turn, grey, #191970, #48D1CC, #7B68EE );
-	width:97%;
-	height:7%;
-	padding-top:6%;
-	margin-top:auto;
-
-	
-
+	height:-5%;
+	width:96%;
+	padding-top:2%;
+	text-align:left;
 	
 }
 .formulario1 #label1{
 	
-	top:25%;
+	top:31.6%;
 	border-radius:3%;
 }
 
 .formulario1 #label2{
-	top:42.9%;
+	top:49.7%;
 	border-radius:3%;
 	
 }
 
 .formulario1 #label3{
 
-	top:61.7%;
+	top: 68.4%;
 	border-radius:3%;
 	
 	
