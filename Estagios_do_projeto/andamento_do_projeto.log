@@ -22,10 +22,15 @@ os links foram estilizados, no aplicativo o javascript esta em pleno funcionamen
 como proximo estagio vou começar a fazer a integração com o banco de dados, gerando a persistencia de dados necessarias para o funcionamento do sistema, caso tudo ocorra como esperado entre duas ou trez semananas o aplicativo para estoque estará em funcionamento.
 - tambem estarei implementando a opção de visualização do estoque, porem essa opção será visivel apenas para usuarios desktop
 
+30/12/2022
+A parte do projeto voltada ao controle de estque está adiantada, já e possivel cadastrar e recuperar os dados que estão no  banco de dados firebase, me preparo agora para gerenciar o controle de acesso ao sistema.
+
 
 //O que esta por vir
 -ao termino do app de controle de estoque estarei implementando o controle de catracas que visa gerenciar a forma como a informação sobre valor, acertos, e pedidos de manutenções das mesmas serão visualizados, alem disso 
 esta previsto a criação de um app para anotação da catraca que ficara disponivel tambem no sistema dessa forma tirando a necessidade de anotar e logo a seguir ter que passar para o sistema
 
 -os carros que rodaram deverão ser importados pelo sistema de bilhetagem, dessa forma o catraqueiro so vai se preocupar em anotar as catracas
+
+
 

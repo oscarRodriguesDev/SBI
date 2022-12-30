@@ -1,69 +1,85 @@
 /*estilos css*/
+/*pagina home*/
+#pagina_home {
+	position: fixed;
+	top:40%;
+	left:25%;
+	display: block;
+	color: white;
+	text-align: center;
+}
+
+#pagina_home_option {
+	display: none;
+}
+
+/*pagina home*/
 
 /*menu lateral*/
 
-.menu{
-	
-	display:none;
+.menu {
+
+	display: none;
 }
 
 
 /*fim das opções do menu*/
 
 /*cabeçalho*/
-.barsup{
+.barsup {
 
-display:none;
+	display: none;
 }
 
 
 
 /*rodape*/
- .rodape{
+.rodape {
 
- 	display: none;
- }
+	display: none;
+}
 
- 
- 
 
- /*informações*/
- .info{
- 
- 	display:none;
- }
 
- 
- /*area de trabalho*/
 
-.desktop{
+/*informações*/
+.info {
+
+	display: none;
+}
+
+
+/*area de trabalho*/
+
+.desktop {
 	position: fixed;
-	background-size:100%;
+	background-size: 100%;
 	opacity: 0.85;
-	background-color:white;
-	width:61.9%;
- 	top: 100%;
- 	left:16%;
- 	height:79.7%;
- 	text-align:center;
-	
+	background-color: white;
+	width: 61.9%;
+	top: 100%;
+	left: 16%;
+	height: 79.7%;
+	text-align: center;
 
- 	
-}
-.bar_desk{
-	position:fixed;
-	background-color:#A52A2A	;
-	 background:linear-gradient( -0.1turn, #FF4500, #191970, #48D1CC, #FF4500);
-	 border:3px solid yelhow;
-	 color:white;
-	 width:101%;
-	 height:9%;
-	 top:5%;
-	 left:-0.5%;
-	 right:20%;
+
+
 }
 
-.bar_desk #tit_form{
+.bar_desk {
+	position: fixed;
+	background-color: #A52A2A;
+	background: linear-gradient(-0.1turn, #FF4500, #191970, #48D1CC, #FF4500);
+	border: 3px solid yelhow;
+	color: white;
+	width: 101%;
+	height: 9%;
+	top: 5%;
+	left: -0.5%;
+	right: 20%;
+}
+
+.bar_desk #tit_form {
 	font-size: 200%;
 	font-weight: bold;
 }
@@ -72,57 +88,60 @@ display:none;
 /*fim dos estilos da area de trabalho*/
 
 /*estilos da telinha de loguin*/
-.loguin_routine{
+.loguin_routine {
 
-	display:none;
+	display: none;
 }
-.protection{
-display: none;
-	
+
+.protection {
+	display: none;
+
 }
-.loguin{
-	position:fixed;
-	color:blue;
+
+.loguin {
+	position: fixed;
+	color: blue;
 	text-align: center;
-	border:solid 2px blue;
+	border: solid 2px blue;
 	background-color: #E0FFFF;
-	padding:0.3%;
-	left:40%;
-	top:35%;
+	padding: 0.3%;
+	left: 40%;
+	top: 35%;
 	border-radius: 1%;
 	display: none;
-	
-	
-}
 
-#loguin_title{
-color:black;
-border-radius: 1%;
-   background-image: linear-gradient(grey,white,grey);
-   position:fixed;
-   border-bottom: 1px solid black;
-   left:40.15%;
-   width:13.6%;
-   font-weight: bold;
-   bottom: 61.6%;
-   display: none;
 
 }
 
-#loguin_words{
-	position:fixed;
-   left:40.2%;
-   width:13.6%;
-   display: none;
+#loguin_title {
+	color: black;
+	border-radius: 1%;
+	background-image: linear-gradient(grey, white, grey);
+	position: fixed;
+	border-bottom: 1px solid black;
+	left: 40.15%;
+	width: 13.6%;
+	font-weight: bold;
+	bottom: 61.6%;
+	display: none;
+
 }
-#loguin_rec{
-	position:fixed;
-   left:43.1%;
-   width:13.6%;
-   bottom: 42%;
-   font-size:55%;
-   font-weight: bold;
-   display: none;
+
+#loguin_words {
+	position: fixed;
+	left: 40.2%;
+	width: 13.6%;
+	display: none;
+}
+
+#loguin_rec {
+	position: fixed;
+	left: 43.1%;
+	width: 13.6%;
+	bottom: 42%;
+	font-size: 55%;
+	font-weight: bold;
+	display: none;
 }
 
 /*fim dos estilos da telinha de loguin*/
@@ -130,99 +149,103 @@ border-radius: 1%;
 /*estilo do formulario do controle de estoque*/
 
 
-.formulario1 label{
-    position:fixed;
-	color:#F0FFFF;
+.formulario1 label {
+	position: fixed;
+	color: #F0FFFF;
 	font-size: 100%;
 	font-weight: bold;
-	left:1%;
-	border:2px solid white;
-	height:-5%;
-	width:96%;
-	padding-top:2%;
-	text-align:left;
-	
-}
-.formulario1 #label1{
-	
-	top:31.6%;
-	border-radius:3%;
+	left: 1%;
+	border: 2px solid white;
+	height: -5%;
+	width: 96%;
+	padding-top: 2%;
+	text-align: left;
+
 }
 
-.formulario1 #label2{
-	top:49.7%;
-	border-radius:3%;
-	
+.formulario1 #label1 {
+
+	top: 31.6%;
+	border-radius: 3%;
 }
 
-.formulario1 #label3{
+.formulario1 #label2 {
+	top: 49.7%;
+	border-radius: 3%;
+
+}
+
+.formulario1 #label3 {
 
 	top: 68.4%;
-	border-radius:3%;
-	
-	
-	
+	border-radius: 3%;
+
+
+
 }
-.formulario1 #eqpms{
-	position:fixed;
+
+.formulario1 #eqpms {
+	position: fixed;
 	font-size: 120%;
-	left:1%;
-	top:35.5%;
-	width:97%;
-	height:7%;
-	border-radius:3%;
-	
-	
+	left: 1%;
+	top: 35.5%;
+	width: 97%;
+	height: 7%;
+	border-radius: 3%;
+
+
 }
 
-.formulario1 #serial{
-	position:fixed;
+.formulario1 #serial {
+	position: fixed;
 	font-size: 120%;
-	left:1%;
-	top:53.5%;
-	width:95.5%;
-	height:7%;
-	border-radius:3%;
+	left: 1%;
+	top: 53.5%;
+	width: 95.5%;
+	height: 7%;
+	border-radius: 3%;
 
 }
-.formulario1 #data{
-	position:fixed;
+
+.formulario1 #data {
+	position: fixed;
 	font-size: 120%;
-	left:1%;
-	top:72.3%;
-	width:95.5%;
-	height:7%;
-	border-radius:3%;
-	
+	left: 1%;
+	top: 72.3%;
+	width: 95.5%;
+	height: 7%;
+	border-radius: 3%;
+
 
 }
-.formulario1 .buttons{
-	position:fixed;
-	top:85%;
-	left:11%;
-	
-}
-.buttons #entrada{
-	font-size:130%;
-	left:10%;
-	border-radius:3%;
+
+.formulario1 .buttons {
+	position: fixed;
+	top: 85%;
+	left: 11%;
+
 }
 
-.buttons #saida{
-	font-size:130%;
-	left:50%;
-	border-radius:3%;
-	
+.buttons #entrada {
+	font-size: 130%;
+	left: 10%;
+	border-radius: 3%;
+}
+
+.buttons #saida {
+	font-size: 130%;
+	left: 50%;
+	border-radius: 3%;
+
 }
 
 /*fim do estilo do formulario do controle de estoque*/
 
 /*body*/
-body{
-	position:fixed;
+body {
+	position: fixed;
 	text-align: center;
-	background-color:black;
-	
-	
-}
+	background-color: black;
 
+
+}

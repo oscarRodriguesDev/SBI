@@ -1,5 +1,15 @@
 /*estilos css*/
 
+/*estilo alternativo mobile*/
+#pagina_home{
+
+	display:none;
+}
+#pagina_home_option{
+	display:block;
+}
+/*estilo alternativo mobile*/
+
 /*menu lateral*/
 
 #version p{
@@ -290,8 +300,8 @@ color:rgb(252, 250, 200);
 	text-align: center;
 	border: solid 2px blue;
 	background-color: #E0FFFF;
-	padding: 0.3%;
-	left: 40%;
+	padding:5px;
+	left: 550px;
 	top: 35%;
 	border-radius: 1%;
 
@@ -299,26 +309,28 @@ color:rgb(252, 250, 200);
 
 #loguin_title {
 	color: black;
-	border-radius: 1%;
+	border-radius: 1px;
 	background-image: linear-gradient(grey, white, grey);
-	position: fixed;
-	border-bottom: 1px solid black;
-	left: 40.15%;
-	width: 13.6%;
+	padding-left: 60px;
+	padding-right: 60px;
+	position: static;
+	left: 553px;
+	width:185px;
+	text-align: center;
 	font-weight: bold;
-	bottom: 61.6%;
+	bottom:385px;
 
 }
 
 #loguin_words {
-	position: fixed;
+	position: static;
 	left: 40.2%;
 	width: 13.6%;
 	font-weight: bold;
 }
 
 #loguin_rec {
-	position: fixed;
+	position: static;
 	left: 43.1%;
 	width: 13.6%;
 	bottom: 42%;

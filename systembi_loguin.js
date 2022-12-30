@@ -13,7 +13,7 @@ function logar() {
 
 
 /*Função responsavel pela rotina de recuperação de senha*/
-function memory_pass(){
+function memory_pass() {
     alert('realizando rotina de lembrança de senha')
 }
 

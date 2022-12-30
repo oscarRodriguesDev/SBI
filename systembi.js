@@ -1,4 +1,5 @@
-/*Função de teste para ver se os elementos estão respondendo a eventos*/
+/*função para bloqueio dos recursos ainda não disponibilizados*/
+
 function default_event() {
    alert('Este recurso ainda não está disponivel!')
 }
@@ -8,6 +9,7 @@ function default_event() {
 
 var message = []
 var lista_banco = [] //lista no estoque
+
 
 
 /*Elementos necessarios para apresentação de dados do banco*/
@@ -40,19 +42,69 @@ var bank_enter = firebase.database()
 
 /*Função para pegar os dados informados pelo usuario*/
 function pega_data(rotina) { //se é entrada ou saida
+   var permissão = 0;
+   // alert(permissão)
    //equipamento
    var select = document.getElementById("eqpms");
    var maq = select.options[select.selectedIndex].text;
+   if (maq == '') {
+      permissão = 1
+   }
+
+
    //serial
    var text = document.getElementById("serial");
    var ser = text.value
+   if (ser == '') {
+      permissão = 2
+   }
+
    //data
    var data = document.getElementById("data");
    var dat = data.value;
+   if (dat == '') {
+      permissão = 3
+   }
+
+
    //matricula
    matricula = prompt("Para finalizar digite sua matricula:")
-   save_equipamento(maq, ser, dat, matricula, rotina)
-   clear_all(rotina)
+
+   if (matricula == '') {
+      permissão = 4
+   }
+   if (matricula == null) {
+      permissão = 5
+   }
+
+
+   switch (permissão) {
+      case 0:
+         save_equipamento(maq, ser, dat, matricula, rotina)
+         clear_all(rotina)
+         break
+      case 1:
+         alert('Escolha uma opção de equipamento!')
+         break
+      case 2:
+         alert('Você não informou o numero serial!')
+         break
+      case 3:
+         alert('Selecione uma data corretamente!')
+         break
+      case 4:
+         alert('Para finalizar, você precisa informar seu nome!')
+         break
+      case 5:
+         alert('Registro cancelado com sucesso!')
+         break
+      default:
+         alert('Ocorreu um erro desconhecido, tente novamente!')
+         break
+   }
+
+
+
 }
 /*fim dos dados que serão gravados*/
 
@@ -63,7 +115,8 @@ function pega_data(rotina) { //se é entrada ou saida
 
 /*Função para salvar os dados no Firebase */
 function save_equipamento(maq, ser, dat, reg, tipo) {
-   span.display='none'
+
+   span.display = 'none'
    leitura_data()
    let status = lista_banco.length
 
@@ -71,7 +124,7 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
    var eqm = [maq, ser, dat, reg, tipo]
 
    if (status > 0) {
-      
+
       newMessageRef.set(
          eqm
       );
@@ -120,7 +173,7 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
 
 /*Função para leitura de dados no firebase*/
 function leitura_data() {
-   span.display ='block'
+   span.display = 'block'
    lista_banco = []
    bank_enter.on('child_added', function (snapshot) {
       lista_banco.push(snapshot.val());
@@ -134,10 +187,10 @@ function leitura_data() {
 
 /*Funçaõ que cria uma tabela para apresentação de dados na tela do usuario*/
 function apresentarData(dados) {
-    tabela = criarTabela(dados)
+   tabela = criarTabela(dados)
    var sp = document.getElementById('conteudo_estoque')
    sp.appendChild(tabela)
- desfazer_tabela(tabela)
+   desfazer_tabela(tabela)
 
 }
 
@@ -146,7 +199,7 @@ function apresentarData(dados) {
 function desfazer_tabela(tabela) {
 
    criarTabela([])
-   
+
 }
 
 
@@ -171,8 +224,8 @@ function acessar_estoque(classe) {
 
 /*Função que estilçiza a tela do formulario para o usuario*/
 function acessar_controle(classe) {
-  
-   span.display =  'none'
+
+   span.display = 'none'
    controle = document.querySelector(classe).style;
    estoque = document.getElementById('estoque').style;//estoque
    controle.display = 'block'
@@ -216,7 +269,7 @@ function criarTabela(conteudo) {
          t.appendChild(texto);
          tr.appendChild(t);
       }
-      (i<lista_banco.length) ? thead.appendChild(tr) : tbody.appendChild(tr);
+      (i < lista_banco.length) ? thead.appendChild(tr) : tbody.appendChild(tr);
       console.log(lista_banco.length)
       console.log(i)
    }
@@ -226,8 +279,13 @@ function criarTabela(conteudo) {
    return tabela;
 }
 
+
+
+
+
+//rotina de verificação de novos equipamentos no banco
 function informa_atualização() {
-    alert('Atualize a pagina e veja as alterações mais recentes')
+   alert('Atualize a pagina e veja as alterações mais recentes')
 }
 
 //setInterval(leitura_auto, 1000);
