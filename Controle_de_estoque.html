@@ -49,7 +49,7 @@
 			<li onclick="default_event()">Criar novo equipamento</li>
 			<li onclick="acessar_controle('.formulario1')">Informar Transação</li>
 			<li onclick="acessar_estoque('estoque')">Meu Estoque</li>
-			<li onclick="default_event()">Historico de retiradas</li>
+			<li onclick="apresenta_saidas('estoque')">Historico de retiradas</li>
 			<li onclick="default_event()">Historico de entradas</li>
 			<li onclick="default_event()">Totais</li>
 			<!--adcionar mais perguntas ao longo do desenvolvimento-->
@@ -108,9 +108,9 @@
 
 		<!--seção do estoque armazenado-->
 		<section id="estoque">
-			<span id="conteudo_estoque">
-
-			</span>
+			<span id="conteudo_estoque"><h3>Todas as transações</h3></span>
+			<span id="conteudo_saida"><h3>Saidas de equipamentos</h3></span>
+			<span id="conteudo_entrada"><h3>entradas de equipamentos</h3></span>
 
 
 

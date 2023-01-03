@@ -1,20 +1,31 @@
 Coisas necessarias para a primeria entrega do sbi
 
-1- implementar forma de loguin para definir como os usuarios vão acessar o sistema(feito)
 
-#unir o sistema de loguin ao sistema de autentificação do firebase
 
-2 impedir dados de serem gravados com valores null
+1-unir o sistema de loguin ao sistema de autentificação do firebase
 
-3- implementar rotina de criação de novos equipamentos, mudar a forma atual que os equipamentos são adcionados diretamente na pagina
+2- implementar rotina de criação de novos equipamentos, mudar a forma atual que os equipamentos são adcionados diretamente na pagina
 
-4- pensar forma de deixar o arquivo .js inacessivel a qualquer um
+3- pensar forma de deixar o arquivo .js inacessivel a qualquer um
 
-5 implementar as visualizações de estoque
+4- implementar as visualizações de estoque
 
-6- implemtar as opções "o que deseja fazer na tela home do sistema"
+5- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-7 versionar o programa(feito)
+6- concertar a forma como é criado o primeiro registro para o banco
 
-8 - visual do aplicativo movel não está legal
+7- mudar o texto das mensagens que colhem o nome do usuario que está informando os dados
+
+8- titulos na tela de apresentação de estoque preciso arrumar um jeito do usuario bater o olho e já saber que se trata de um historico de saidas ou de entrada ou geral
+
+
+9- implementar as opções de totais
+
+10- resolver o problema do cabeçalho quando sai e retorna para a tela de saidas de equipamentos
+
+
+
+
+
+
 

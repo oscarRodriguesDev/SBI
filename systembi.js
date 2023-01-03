@@ -14,9 +14,21 @@ var lista_banco = [] //lista no estoque
 
 /*Elementos necessarios para apresentação de dados do banco*/
 var span = document.getElementById('conteudo_estoque').style
-span.display = 'block'
+span.display = 'none'
+
+var span_saida = document.getElementById('conteudo_saida').style
+span.display = 'none'
+
+var span_entrada = document.getElementById('conteudo_entrada').style
+span.display = 'none'
+
+
 var span_estoque = document.getElementById('conteudo_estoque')
-var tabela = document.createElement("table");
+
+var span_exit= document.getElementById('conteudo_saida')
+
+
+
 
 /*Eementos necessarios para apresentação dos dados do banco*/
 
@@ -208,6 +220,7 @@ function desfazer_tabela(tabela) {
 function acessar_estoque(classe) {
 
    span.display = 'block'
+   span_saida.display ='none'
    apresentarData(lista_banco)
    lista_banco = []
    estoque = document.getElementById(classe).style;//estoque
@@ -226,6 +239,7 @@ function acessar_estoque(classe) {
 function acessar_controle(classe) {
 
    span.display = 'none'
+   span_saida.display='none'
    controle = document.querySelector(classe).style;
    estoque = document.getElementById('estoque').style;//estoque
    controle.display = 'block'
@@ -258,6 +272,7 @@ function clear_all(decisão) {
 
 
 function criarTabela(conteudo) {
+   var tabela = document.createElement("table");
    var thead = document.createElement("thead");
    var tbody = document.createElement("tbody");
    var thd = function (i) { return (i == 0) ? "th" : "td"; };
@@ -270,8 +285,7 @@ function criarTabela(conteudo) {
          tr.appendChild(t);
       }
       (i < lista_banco.length) ? thead.appendChild(tr) : tbody.appendChild(tr);
-      console.log(lista_banco.length)
-      console.log(i)
+      
    }
    tabela.appendChild(thead);
    tabela.appendChild(tbody);
@@ -280,6 +294,34 @@ function criarTabela(conteudo) {
 }
 
 
+/*função utilizada para recolher apenas as saidas de equipamentos*/
+function apenas_saidas() {
+   leitura_data()
+   let lista_saida =[]
+  lista_saida = [['Data','Equipamento','Serial']]
+   lista_banco.forEach(element => {
+      if (element[4] == 'Saida') {
+         lista_saida.push([element[2],element[0],element[1]])
+      }
+   });
+ 
+   return lista_saida
+}
+
+
+
+
+function apresenta_saidas(classe) {
+   
+   tabela_saida =  criarTabela(apenas_saidas())
+   span.display = 'none'
+   span_exit.appendChild(tabela_saida) 
+   estoque = document.getElementById(classe).style;//estoque
+   controle = document.querySelector('.formulario1').style;
+   estoque.display = 'block'
+   controle.display = 'none'
+   span_saida.display = 'block'
+}
 
 
 
