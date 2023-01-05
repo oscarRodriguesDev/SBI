@@ -294,17 +294,19 @@ color:rgb(252, 250, 200);
 	height: 100%;
 }
 
+
+
 .loguin {
 	position: fixed;
 	color: blue;
 	text-align: center;
 	border: solid 2px blue;
 	background-color: #E0FFFF;
-	padding:5px;
-	left: 550px;
+	padding:1px;
+	left: 40%;
 	top: 35%;
 	border-radius: 1%;
-
+	
 }
 
 #loguin_title {

@@ -16,12 +16,13 @@ Coisas necessarias para a primeria entrega do sbi
 
 7- mudar o texto das mensagens que colhem o nome do usuario que está informando os dados
 
-8- titulos na tela de apresentação de estoque preciso arrumar um jeito do usuario bater o olho e já saber que se trata de um historico de saidas ou de entrada ou geral
+8- titulos na tela de apresentação de estoque preciso arrumar um jeito do usuario bater o olho e já saber que se
+ trata de um historico de saidas ou de entrada ou geral
 
-
-9- implementar as opções de totais
 
 10- resolver o problema do cabeçalho quando sai e retorna para a tela de saidas de equipamentos
+
+11 corrigir problema de visualizações das telas de estoque, algumas estão se sobrepondo
 
 
 

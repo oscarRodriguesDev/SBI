@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
+	
 
 
 	<title>SBI</title>
@@ -51,7 +52,7 @@
 			<li onclick="acessar_estoque('estoque')">Meu Estoque</li>
 			<li onclick="apresenta_saidas('estoque')">Historico de retiradas</li>
 			<li onclick="default_event()">Historico de entradas</li>
-			<li onclick="default_event()">Totais</li>
+			<li onclick="contador('estoque')">Totais</li>
 			<!--adcionar mais perguntas ao longo do desenvolvimento-->
 
 		</ul>
@@ -111,6 +112,8 @@
 			<span id="conteudo_estoque"><h3>Todas as transações</h3></span>
 			<span id="conteudo_saida"><h3>Saidas de equipamentos</h3></span>
 			<span id="conteudo_entrada"><h3>entradas de equipamentos</h3></span>
+			<span id="totais"><h3>Equipamentos em estoque</h3></span>
+			
 
 
 

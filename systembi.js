@@ -17,16 +17,21 @@ var span = document.getElementById('conteudo_estoque').style
 span.display = 'none'
 
 var span_saida = document.getElementById('conteudo_saida').style
-span.display = 'none'
+span_saida.display = 'none'
 
 var span_entrada = document.getElementById('conteudo_entrada').style
-span.display = 'none'
+span_entrada.display = 'none'
+
+var span_totais = document.getElementById('totais').style
+span_totais.display = 'none'
+
 
 
 var span_estoque = document.getElementById('conteudo_estoque')
 
-var span_exit= document.getElementById('conteudo_saida')
+var span_exit = document.getElementById('conteudo_saida')
 
+var span_all = document.getElementById('totais')
 
 
 
@@ -48,6 +53,46 @@ var bank_enter = firebase.database()
    .ref('Estoque Bilhetagem Serramar');
 /*Fim das configurações do firebase*/
 
+
+function contador(classe) {
+   /*separando os itens do banco*/
+  let all = []
+  let total = [['Equipamento','Quantidade']]
+ lista_banco.forEach(eqp => {
+   if(eqp[4]=='Entrada'){
+   all.push(eqp[0])
+   }
+ });
+
+   //conta e coloca em um objeto com nome e quantidade
+   
+   
+   var counts = {};
+   all.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+ 
+  for (const key in counts) {
+   if (counts.hasOwnProperty.call(counts, key)) {
+      const valor = counts[key];
+      total.push([key,counts[key]])
+      
+   }
+  }
+    console.log(total)
+
+   
+
+   /*mudando o layout para apresentação dos totais*/
+   span_all.appendChild(criarTabela(total))
+   span.display = 'none'
+   estoque = document.getElementById(classe).style;//estoque
+   controle = document.querySelector('.formulario1').style;
+   estoque.display = 'block'
+   controle.display = 'none'
+   span_totais.display = 'block'
+
+
+
+}
 
 
 
@@ -220,7 +265,7 @@ function desfazer_tabela(tabela) {
 function acessar_estoque(classe) {
 
    span.display = 'block'
-   span_saida.display ='none'
+   span_saida.display = 'none'
    apresentarData(lista_banco)
    lista_banco = []
    estoque = document.getElementById(classe).style;//estoque
@@ -239,7 +284,7 @@ function acessar_estoque(classe) {
 function acessar_controle(classe) {
 
    span.display = 'none'
-   span_saida.display='none'
+   span_saida.display = 'none'
    controle = document.querySelector(classe).style;
    estoque = document.getElementById('estoque').style;//estoque
    controle.display = 'block'
@@ -285,7 +330,7 @@ function criarTabela(conteudo) {
          tr.appendChild(t);
       }
       (i < lista_banco.length) ? thead.appendChild(tr) : tbody.appendChild(tr);
-      
+
    }
    tabela.appendChild(thead);
    tabela.appendChild(tbody);
@@ -297,14 +342,14 @@ function criarTabela(conteudo) {
 /*função utilizada para recolher apenas as saidas de equipamentos*/
 function apenas_saidas() {
    leitura_data()
-   let lista_saida =[]
-  lista_saida = [['Data','Equipamento','Serial']]
+   let lista_saida = []
+   lista_saida = [['Data', 'Equipamento', 'Serial']]
    lista_banco.forEach(element => {
       if (element[4] == 'Saida') {
-         lista_saida.push([element[2],element[0],element[1]])
+         lista_saida.push([element[2], element[0], element[1]])
       }
    });
- 
+
    return lista_saida
 }
 
@@ -312,10 +357,10 @@ function apenas_saidas() {
 
 
 function apresenta_saidas(classe) {
-   
-   tabela_saida =  criarTabela(apenas_saidas())
+
+   tabela_saida = criarTabela(apenas_saidas())
    span.display = 'none'
-   span_exit.appendChild(tabela_saida) 
+   span_exit.appendChild(tabela_saida)
    estoque = document.getElementById(classe).style;//estoque
    controle = document.querySelector('.formulario1').style;
    estoque.display = 'block'
