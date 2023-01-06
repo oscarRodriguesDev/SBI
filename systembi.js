@@ -9,6 +9,8 @@ function default_event() {
 
 var message = []
 var lista_banco = [] //lista no estoque
+var verification_bd =false;
+
 
 
 
@@ -55,40 +57,45 @@ var bank_enter = firebase.database()
 
 
 function contador(classe) {
+
    /*separando os itens do banco*/
-  let all = []
-  let total = [['Equipamento','Quantidade']]
- lista_banco.forEach(eqp => {
-   if(eqp[4]=='Entrada'){
-   all.push(eqp[0])
-   }
- });
+   lista_banco = []
+   leitura_data()
+   let all = []
+   let total = [['Equipamento', 'Quantidade']]
+   lista_banco.forEach(eqp => {
+      if (eqp[4] == 'Entrada') {
+         all.push(eqp[0])
+      }
+   });
 
    //conta e coloca em um objeto com nome e quantidade
-   
-   
+
+
    var counts = {};
-   all.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
- 
-  for (const key in counts) {
-   if (counts.hasOwnProperty.call(counts, key)) {
-      const valor = counts[key];
-      total.push([key,counts[key]])
-      
+   all.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+
+   for (const key in counts) {
+      if (counts.hasOwnProperty.call(counts, key)) {
+         const valor = counts[key];
+         total.push([key, counts[key]])
+
+      }
    }
-  }
-    console.log(total)
-
-   
-
    /*mudando o layout para apresentação dos totais*/
-   span_all.appendChild(criarTabela(total))
+   let table_total = criarTabela(total);
+   let tablettl_style = table_total.style
+   tablettl_style.textAlign = 'center'
+   span_all.appendChild(table_total)
+
    span.display = 'none'
    estoque = document.getElementById(classe).style;//estoque
    controle = document.querySelector('.formulario1').style;
    estoque.display = 'block'
    controle.display = 'none'
    span_totais.display = 'block'
+
+
 
 
 
@@ -125,7 +132,7 @@ function pega_data(rotina) { //se é entrada ou saida
 
 
    //matricula
-   matricula = prompt("Para finalizar digite sua matricula:")
+   matricula = prompt("Para finalizar digite seu nome:")
 
    if (matricula == '') {
       permissão = 4
@@ -138,7 +145,7 @@ function pega_data(rotina) { //se é entrada ou saida
    switch (permissão) {
       case 0:
          save_equipamento(maq, ser, dat, matricula, rotina)
-         clear_all(rotina)
+       
          break
       case 1:
          alert('Escolha uma opção de equipamento!')
@@ -166,45 +173,54 @@ function pega_data(rotina) { //se é entrada ou saida
 /*fim dos dados que serão gravados*/
 
 
+/*a função abaixo vai verificar se o item que estamos tentando inserir ja esta no banco de dados
+caso positivo, o sistema não deve permitir que o usuario insira-o no estoque*/
+function verifica_duplicata(lista,serial,tipo) {
+   let obs = false
+   let existe = false
+ for (let index = 0; index < lista.length; index++) {
+   let numero = lista[index][1];
+   let transação = lista[index][4]
+   
+   if(numero==serial&&transação==tipo){
+      obs= true
+   }
+ }
+   if(obs){
+      existe= true
+   }
+   return existe
+}
+
+
 
 
 
 
 /*Função para salvar os dados no Firebase */
 function save_equipamento(maq, ser, dat, reg, tipo) {
-
+    
    span.display = 'none'
    leitura_data()
    let status = lista_banco.length
-
    var newMessageRef = bank_enter.push();
    var eqm = [maq, ser, dat, reg, tipo]
-
+   let exists = verifica_duplicata(lista_banco,ser,tipo)
+   /*ação caso exista ou não*/
+   if(exists){
+      alert('informação duplicada, verifique o numero serial e tente novamente!')
+   }else{
    if (status > 0) {
-
       newMessageRef.set(
          eqm
       );
    } else {
-
-      head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
-
+    head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
    }
-   if (tipo == 'Entrada') {
-
-      //mostrar mensagem de entrada de equipamento
-      alert(maq + ' foi adcionado ao estoque com sucesso por ' + reg)
-      clear_all(tipo)
-      leitura_data()
-   } else {
-      //mostrar mensagem de saida de equipamento
-      alert(maq + ' foi retirado do estoque com sucesso por ' + reg)
-      clear_all(tipo)
-      leitura_data()
-   }
+   clear_all(tipo)
    informa_atualização()
 }
-
+}
 /*Fim da função para salvar dados no firebase*/
 
 
@@ -219,8 +235,20 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
       heads
    );
    alert('seu espaço de estoque foi criado com sucesso! A seguir vamos adcionar seus primeiros equipamentos!')
-   save_equipamento(maq, ser, dat, reg, tipo)
+  save_equipamento(maq, ser, dat, reg, tipo)
 
+  if (tipo == 'Entrada') {
+
+   //mostrar mensagem de entrada de equipamento
+   alert(maq + ' foi adcionado ao estoque com sucesso por ' + reg)
+   clear_all(tipo)
+   leitura_data()
+} else {
+   //mostrar mensagem de saida de equipamento
+   alert(maq + ' foi retirado do estoque com sucesso por ' + reg)
+   clear_all(tipo)
+   leitura_data()
+}
 }
 /*fim da função que cria o cabeçalho da tabela no banco de dados*/
 
@@ -266,6 +294,7 @@ function acessar_estoque(classe) {
 
    span.display = 'block'
    span_saida.display = 'none'
+   span_totais.display = 'none'
    apresentarData(lista_banco)
    lista_banco = []
    estoque = document.getElementById(classe).style;//estoque

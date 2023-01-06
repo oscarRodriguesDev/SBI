@@ -12,17 +12,15 @@ Coisas necessarias para a primeria entrega do sbi
 
 5- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-6- concertar a forma como é criado o primeiro registro para o banco
-
-7- mudar o texto das mensagens que colhem o nome do usuario que está informando os dados
-
-8- titulos na tela de apresentação de estoque preciso arrumar um jeito do usuario bater o olho e já saber que se
- trata de um historico de saidas ou de entrada ou geral
+8 preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
+ser disponivel para todos, mas apenas para os gestores que deverão fazer a limpa no sistema quando necessario, mantendo 
+o estoque sempre organizado
 
 
-10- resolver o problema do cabeçalho quando sai e retorna para a tela de saidas de equipamentos
 
-11 corrigir problema de visualizações das telas de estoque, algumas estão se sobrepondo
+
+
+
 
 
 
