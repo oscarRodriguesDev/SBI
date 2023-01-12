@@ -9,14 +9,13 @@ function default_event() {
 
 var message = []
 var lista_banco = [] //lista no estoque
-var verification_bd =false;
 
-
-
+//lista de equipamentos no banco de dados
+lista_devices = []
 
 /*Elementos necessarios para apresentação de dados do banco*/
-var span = document.getElementById('conteudo_estoque').style
-span.display = 'none'
+var span_geral = document.getElementById('conteudo_estoque').style
+span_geral.display = 'none'
 
 var span_saida = document.getElementById('conteudo_saida').style
 span_saida.display = 'none'
@@ -28,16 +27,16 @@ var span_totais = document.getElementById('totais').style
 span_totais.display = 'none'
 
 
-
+/*variaveis que representam elementos na pagina*/
 var span_estoque = document.getElementById('conteudo_estoque')
 
 var span_exit = document.getElementById('conteudo_saida')
 
+var span_enter = document.getElementById('conteudo_entrada')
+
 var span_all = document.getElementById('totais')
 
 
-
-/*Eementos necessarios para apresentação dos dados do banco*/
 
 
 /*Todas a configuração necessario para que o firebase funcione*/
@@ -51,12 +50,30 @@ const firebaseConfig = {
    appId: "1:421227812598:web:102d334076b7ace764fed7"
 };
 firebase.initializeApp(firebaseConfig);
+/*Fim das configurações do firebase*/
+
+/*banco de opções de equipamento no firebase*/
+var bank_equipamentos = firebase.database()
+   .ref('Equipamentos');
+
+/*banco de estoque no firebase*/
 var bank_enter = firebase.database()
    .ref('Estoque Bilhetagem Serramar');
 /*Fim das configurações do firebase*/
 
+/*vamos fazer a leitura do que tem no banco de dados logo aqui mesmo*/
+
+function read_to_select(){
+   //lista_banco = []
+   bank_equipamentos.on('child_added', function (snapshot) {
+      lista_devices.push(snapshot.val());
+   }); 
+}
+
+
 
 function contador(classe) {
+   span_saida.display = 'none'
 
    /*separando os itens do banco*/
    lista_banco = []
@@ -87,19 +104,17 @@ function contador(classe) {
    let tablettl_style = table_total.style
    tablettl_style.textAlign = 'center'
    span_all.appendChild(table_total)
-
-   span.display = 'none'
+   let span_geral = document.getElementById('conteudo_estoque').style
+   span_geral.display = 'none'
    estoque = document.getElementById(classe).style;//estoque
    controle = document.querySelector('.formulario1').style;
    estoque.display = 'block'
    controle.display = 'none'
    span_totais.display = 'block'
-
-
-
-
-
+   span_entrada.display = 'none'
 }
+
+
 
 
 
@@ -145,7 +160,7 @@ function pega_data(rotina) { //se é entrada ou saida
    switch (permissão) {
       case 0:
          save_equipamento(maq, ser, dat, matricula, rotina)
-       
+
          break
       case 1:
          alert('Escolha uma opção de equipamento!')
@@ -166,28 +181,30 @@ function pega_data(rotina) { //se é entrada ou saida
          alert('Ocorreu um erro desconhecido, tente novamente!')
          break
    }
-
-
-
 }
 /*fim dos dados que serão gravados*/
 
 
+
+
+
+
+
 /*a função abaixo vai verificar se o item que estamos tentando inserir ja esta no banco de dados
 caso positivo, o sistema não deve permitir que o usuario insira-o no estoque*/
-function verifica_duplicata(lista,serial,tipo) {
+function verifica_duplicata(lista, serial, tipo) {
    let obs = false
    let existe = false
- for (let index = 0; index < lista.length; index++) {
-   let numero = lista[index][1];
-   let transação = lista[index][4]
-   
-   if(numero==serial&&transação==tipo){
-      obs= true
+   for (let index = 0; index < lista.length; index++) {
+      let numero = lista[index][1];
+      let transação = lista[index][4]
+
+      if (numero == serial && transação == tipo) {
+         obs = true
+      }
    }
- }
-   if(obs){
-      existe= true
+   if (obs) {
+      existe = true
    }
    return existe
 }
@@ -199,29 +216,31 @@ function verifica_duplicata(lista,serial,tipo) {
 
 /*Função para salvar os dados no Firebase */
 function save_equipamento(maq, ser, dat, reg, tipo) {
-    
-   span.display = 'none'
+
+   span_geral.display = 'none'
    leitura_data()
    let status = lista_banco.length
    var newMessageRef = bank_enter.push();
    var eqm = [maq, ser, dat, reg, tipo]
-   let exists = verifica_duplicata(lista_banco,ser,tipo)
+   let exists = verifica_duplicata(lista_banco, ser, tipo)
    /*ação caso exista ou não*/
-   if(exists){
+   if (exists) {
       alert('informação duplicada, verifique o numero serial e tente novamente!')
-   }else{
-   if (status > 0) {
-      newMessageRef.set(
-         eqm
-      );
    } else {
-    head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+      if (status > 0) {
+         newMessageRef.set(
+            eqm
+         );
+      } else {
+         head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+      }
+      clear_all(tipo)
+      informa_atualização()
    }
-   clear_all(tipo)
-   informa_atualização()
-}
 }
 /*Fim da função para salvar dados no firebase*/
+
+
 
 
 
@@ -235,20 +254,20 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
       heads
    );
    alert('seu espaço de estoque foi criado com sucesso! A seguir vamos adcionar seus primeiros equipamentos!')
-  save_equipamento(maq, ser, dat, reg, tipo)
+   save_equipamento(maq, ser, dat, reg, tipo)
 
-  if (tipo == 'Entrada') {
+   if (tipo == 'Entrada') {
 
-   //mostrar mensagem de entrada de equipamento
-   alert(maq + ' foi adcionado ao estoque com sucesso por ' + reg)
-   clear_all(tipo)
-   leitura_data()
-} else {
-   //mostrar mensagem de saida de equipamento
-   alert(maq + ' foi retirado do estoque com sucesso por ' + reg)
-   clear_all(tipo)
-   leitura_data()
-}
+      //mostrar mensagem de entrada de equipamento
+      alert(maq + ' foi adcionado ao estoque com sucesso por ' + reg)
+      clear_all(tipo)
+      leitura_data()
+   } else {
+      //mostrar mensagem de saida de equipamento
+      alert(maq + ' foi retirado do estoque com sucesso por ' + reg)
+      clear_all(tipo)
+      leitura_data()
+   }
 }
 /*fim da função que cria o cabeçalho da tabela no banco de dados*/
 
@@ -258,15 +277,18 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
 
 /*Função para leitura de dados no firebase*/
 function leitura_data() {
-   span.display = 'block'
+
+   span_geral.display = 'block'
    lista_banco = []
    bank_enter.on('child_added', function (snapshot) {
       lista_banco.push(snapshot.val());
-
    });
-
 }
 /*Fim da função para leitura de dados no firebase*/
+
+
+
+
 
 
 
@@ -281,6 +303,10 @@ function apresentarData(dados) {
 
 
 
+
+
+
+/*função faz com que a tabela fique vazia*/
 function desfazer_tabela(tabela) {
 
    criarTabela([])
@@ -291,8 +317,9 @@ function desfazer_tabela(tabela) {
 
 /*Função que permite  a apresentação dos dados na tela do usuario*/
 function acessar_estoque(classe) {
-
-   span.display = 'block'
+  
+   span_entrada.display = 'none'
+   span_geral.display = 'block'
    span_saida.display = 'none'
    span_totais.display = 'none'
    apresentarData(lista_banco)
@@ -311,13 +338,15 @@ function acessar_estoque(classe) {
 
 /*Função que estilçiza a tela do formulario para o usuario*/
 function acessar_controle(classe) {
-
-   span.display = 'none'
+  
+   span_entrada.display = 'none'
+   span_geral.display = 'none'
    span_saida.display = 'none'
    controle = document.querySelector(classe).style;
    estoque = document.getElementById('estoque').style;//estoque
    controle.display = 'block'
    estoque.display = 'none'
+    
 }
 /*Fim da funçaõ que permite apresentação da tela de formaulario*/
 
@@ -385,10 +414,15 @@ function apenas_saidas() {
 
 
 
-function apresenta_saidas(classe) {
 
+
+/*responsavel por apresentar as saidas recentes, devo armazenar em um local onde 
+posso controlar a quantidade de saidas armazenadas*/
+function apresenta_saidas(classe) {
+   span_entrada.display = 'none'
+   span_totais.display = 'none'
    tabela_saida = criarTabela(apenas_saidas())
-   span.display = 'none'
+   span_geral.display = 'none'
    span_exit.appendChild(tabela_saida)
    estoque = document.getElementById(classe).style;//estoque
    controle = document.querySelector('.formulario1').style;
@@ -399,9 +433,69 @@ function apresenta_saidas(classe) {
 
 
 
+
+
+/*função utilizada para recolher apenas as entradas de equipamentos*/
+function apenas_entradas() {
+   leitura_data()
+   let lista_entrada = []
+   lista_entrada = [['Data', 'Equipamento', 'Serial']]
+   lista_banco.forEach(element => {
+      if (element[4] == 'Entrada') {
+         lista_entrada.push([element[2], element[0], element[1]])
+      }
+   });
+
+   return lista_entrada
+}
+
+
+
+
+/*responsavel por apresentar todas entradas*/
+function apresenta_entradas(classe) {
+   span_totais.display = 'none'
+   span_saida.display = 'none'
+   span_totais.display = 'none'
+   tabela_entrada = criarTabela(apenas_entradas())
+   span_geral.display = 'none'
+   span_enter.appendChild(tabela_entrada)
+   estoque = document.getElementById(classe).style;//estoque
+   controle = document.querySelector('.formulario1').style;
+   estoque.display = 'block'
+   controle.display = 'none'
+   span_entrada.display = 'block'
+}
+
+
+/**faz as leituras iniciais para o sistema funcionar corretamente */
+function init_read() {
+   leitura_data()
+   read_to_select()
+   
+  
+}
+
+
+/*função para listar as opções do select de equipamentos*/
+ function listar_options(){
+  var cp =  document.querySelector('.campos')
+  let select =  document.createElement('select')
+  select.setAttribute('id', 'eqpms')
+  //criando os options
+  
+ lista_devices.forEach(element => {
+   let option =document.createElement('option')
+   option.text =  element
+   select.appendChild(option)
+ });
+  cp.append(select)
+  
+ 
+ }
+
 //rotina de verificação de novos equipamentos no banco
 function informa_atualização() {
    alert('Atualize a pagina e veja as alterações mais recentes')
 }
 
-//setInterval(leitura_auto, 1000);

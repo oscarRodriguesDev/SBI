@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
 	
-
-
 	<title>SBI</title>
 </head>
-
-<body onload="leitura_data()">
+<body onload="init_read()">
+	
 	<!--Barra superior onde fica o titulo do programa-->
 	<header class="barsup">
 		<h1><span>S</span>istema de <span>B</span>ilhetagem
@@ -36,69 +32,43 @@
 			</ul>
 		</div>
 		<!--Fim das opções do menu-->
-
-	</nav>
-
+	</nav>]
 	<!---->
-
 	<!--menu lateral com informações importantes-->
 	<section class="info">
 		<span id="salve">BEM VINDO AO SBI</span>
 		<p style="font-weight: bold;">O que deseja fazer ?</p>
 		<ul>
 			<!--Opções são exclusivas da pagina controle de estoque-->
-			<li onclick="default_event()">Criar novo equipamento</li>
+			<li><a href="insert_db.html" style="text-decoration:none;color:black">Criar novo equipamento</a></li>
 			<li onclick="acessar_controle('.formulario1')">Informar Transação</li>
 			<li onclick="acessar_estoque('estoque')">Meu Estoque</li>
 			<li onclick="apresenta_saidas('estoque')">Historico de retiradas</li>
-			<li onclick="default_event()">Historico de entradas</li>
+			<li onclick="apresenta_entradas('estoque')">Historico de entradas</li>
 			<li onclick="contador('estoque')">Totais</li>
+			<!--li onclick="listar_options()">aparecer select</li-->
 			<!--adcionar mais perguntas ao longo do desenvolvimento-->
 
 		</ul>
 	</section>
 	<!--fim das informações importantes-->
-
-
 	<!--seção area de trabalho-->
 	<section class="desktop">
 		<header class="bar_desk">
 			<h1 id="tit_form">Controle de Estoque</h1>
 		</header>
-
 		<section class="formulario1">
-
 			<!--fim da seção de area de trabalho-->
-
 			<form>
-
 				<label id="label1">Equipamento:</label>
 				<label id="label2">Numero de Serie:</label>
 				<label id="label3">Data:</label>
 				<br>
 				<span class="campos">
-					<select name="equipamentos" id="eqpms" form=" controle">
-						<option value=""></option>
-						<option value="">Painel Motorista</option>
-						<option value="">Connection</option>
-						<option value="">CCIT</option>
-						<option value="">Upex</option>
-						<option value="">GPS</option>
-						<option value="">Antena Upex</option>
-						<option value="">Fonte Painel</option>
-						<option value="">Fonte Câmera</option>
-						<option value="">Cabo PCB Upex</option>
-						<option value="">Câmera</option>
-						<option value="">Cbo VGA upex</option>
-						<option value="">Controlador FRT</option>
-						<option value="">Controlador Mobitec</option>
-						<option value="">Maquina Cielo</option>
+					<select name="equipamentos" id="eqpms" form="controle" onfocus=" listar_options()">
 					</select>
-
 					<span><input type="number" id="serial"></span>
 					<span><input type="date" id="data"></span>
-
-
 					<div class="buttons">
 						<input type="button" id="entrada" value="Regitrar Entrada" onclick="pega_data('Entrada')">
 						<input type="button" id="saida" value="Regitrar Saída" onclick="pega_data('Saida')">
@@ -106,36 +76,33 @@
 				</span>
 			</form>
 		</section>
-
 		<!--seção do estoque armazenado-->
 		<section id="estoque">
-			<span id="conteudo_estoque"><h3>Todas as transações</h3></span>
-			<span id="conteudo_saida"><h3>Saidas de equipamentos</h3></span>
-			<span id="conteudo_entrada"><h3>entradas de equipamentos</h3></span>
-			<span id="totais"><h3>Quantidades por equipamento</h3></span>
-			
-
-
-
+			<span id="conteudo_estoque">
+				<h3>Todas as transações</h3>
+			</span>
+			<span id="conteudo_saida">
+				<h3>Saidas de equipamentos</h3>
+			</span>
+			<span id="conteudo_entrada">
+				<h3>Entradas de equipamentos</h3>
+			</span>
+			<span id="totais">
+				<h3>Quantidades por equipamento</h3>
+			</span>
 		</section>
 		<!--fim da seção do estoque armazenado-->
-
 		<!--seção do rodape-->
 	</section>
 	<footer class="rodape">
 		<p>Todos os direitos reservados &#169</p>
+		<div id='version'>
+			<p>Versão 1.0.0 beta</p>
+		</div>
 	</footer>
 	</section>
-	<!--fim da seção do rodape-->
-	<!--https://www.gstatic.com/firebasejs/3.7.4/firebase.js versão que funciona-->
-	<!--https://www.gstatic.com/firebasejs/9.15.0/firebase.js  versão que não funciona-->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
 	</script>
 	<script src="systembi.js"></script>
-
-
-
-
 </body>
-
 </html>

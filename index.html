@@ -7,7 +7,9 @@
 
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
-	<script src="systembi.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="systembi_home.js"></script>
+	<script src="systembi_loguin.js"></script> <!--script especifico para a rotina de loguin-->
 
 	<title>SBI</title>
 </head>
@@ -17,9 +19,7 @@
 		<h3>Acesse restrito a desktop</h3>
 	</div>
 	<div id="pagina_home_option">
-		<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
-		</script>
-
+	
 		<!--Barra superior onde fica o titulo do programa-->
 		<header class="barsup">
 			<h1><span>S</span>istema de <span>B</span>ilhetagem
@@ -94,18 +94,17 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 		</footer>
 
 		<!--cria uma rotina de loguin obrigatoria quando o usuario tentar realizar uma leitura de dados-->
-		<script src="systembi_loguin.js"></script> <!--script especifico para a rotina de loguin-->
 		<span id="sugest_loguin" onclick="chamar_loguin()">Logar Para ter total acesso?</span>
 		<section class="loguin_routine">
 			<div class="protection">proteção</div>
 			<!--Tela de loguin para que o usuario possa usar 100% do sistema
 		ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
-           
+
 			<section class="loguin">
 				<span id="loguin_title">Loguin</span><br>
-				<span id="loguin_words">User</span><br>
+				<span id="loguin_words">E-mail</span><br>
 				<span> <input type="text" id="user"> </span><br>
-				<span id="loguin_words">Password</span><br>
+				<span id="loguin_words">Senha</span><br>
 				<span> <input type="Password" id="senha"> </span><br>
 				<span> <input type="button" value="Logar" onclick="logar()"></span>
 				<span> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br>
@@ -114,7 +113,7 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 				<span id="loguin_rec"><a href="#">Recuperar dados de acesso</a>
 				</span><br>
 			</section>
-		
+
 		</section>
 		<!--aqui termina a rotina obrigatoria de loguin-->
 	</div>

@@ -8,13 +8,21 @@ Coisas necessarias para a primeria entrega do sbi
 
 3- pensar forma de deixar o arquivo .js inacessivel a qualquer um
 
-4- implementar as visualizações de estoque
 
 5- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-8 preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
+6 preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
 ser disponivel para todos, mas apenas para os gestores que deverão fazer a limpa no sistema quando necessario, mantendo 
 o estoque sempre organizado
+
+7 preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
+hoje quando isso acontece, o equipamento aparece 3 vezes
+
+8- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
+
+
+
+
 
 
 

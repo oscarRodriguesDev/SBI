@@ -1,6 +1,9 @@
 /*estilos css*/
 
 /*estilo alternativo mobile*/
+#invisible{
+	display:none;
+}
 #pagina_home{
 
 	display:none;
@@ -479,8 +482,59 @@ color:rgb(252, 250, 200);
 	border: 1px solid black;
 	font-size: 80%;
 }
+#conteudo_estoque{
+	display:none;
+}
+#conteudo_saida{
+	display:none;
+}
+
+#conteudo_entrada{
+	display:none;
+}
+
+#totais{
+	display:none;
+}
 
 /*fim dos estilos da tela de estoque*/
+
+/*Estilo para a pagina de insert bank */
+#insert_bank{
+	position:fixed;
+	border:1px solid black;
+	left:25%;
+	bottom:50%;
+	width: 50%;
+	padding-left:auto;
+	padding-right:1%;
+	padding-bottom:1%;
+	padding-top: 1%;
+	
+}
+#insert_bank #text_input{
+	width: 80%;
+	left:10%;
+	font-size: 150%;
+}
+#insert_bank label{
+	position:fixed;
+	font-size: 110%;
+	left:27%;
+	bottom: 59%;
+}
+#Insert_in_bank{
+	font-size: 100%;
+}
+
+#voltar{
+	position:fixed;
+	bottom: 40%;
+	left:48%;
+}
+
+/*fim dos estilos p-ara a pagina de insert bank*/
+
 
 /*body*/
 body {
