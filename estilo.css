@@ -268,7 +268,7 @@ color:rgb(252, 250, 200);
 #sugest_loguin {
 	position: fixed;
 	text-align: center;
-	left:85%;
+	left:75%;
 	bottom: 90%;
 	padding:5px;
 	background-color: black;
@@ -278,6 +278,26 @@ color:rgb(252, 250, 200);
 	font-weight:bold;
 	border:1px solid black;
 	border-radius:10px;
+}
+
+#sugest_logout{
+	position: fixed;
+	text-align: center;
+	left:90%;
+	bottom: 90%;
+	padding:5px;
+	background-color: black;
+	opacity:0.6;
+	color: rgb(208, 249, 245);
+	font-size: 80%;
+	font-weight:bold;
+	border:1px solid black;
+	border-radius:10px;
+
+}
+#sugest_logout:hover{
+	background-color: aliceblue;
+	color:black;
 }
 
 #sugest_loguin:hover{

@@ -14,7 +14,7 @@
 	<title>SBI</title>
 </head>
 
-<body>
+<body onload="verifica_loguin()">
 	<div id="pagina_home">
 		<h3>Acesse restrito a desktop</h3>
 	</div>
@@ -94,7 +94,10 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 		</footer>
 
 		<!--cria uma rotina de loguin obrigatoria quando o usuario tentar realizar uma leitura de dados-->
-		<span id="sugest_loguin" onclick="chamar_loguin()">Logar Para ter total acesso?</span>
+		<span id="sugest_loguin" onclick="chamar_loguin()">Logar Para ter total acesso?<br></span>
+		<span id="sugest_logout" onclick="logout()">Sair?<br></span>
+		
+		
 		<section class="loguin_routine">
 			<div class="protection">proteção</div>
 			<!--Tela de loguin para que o usuario possa usar 100% do sistema

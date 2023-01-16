@@ -1,24 +1,42 @@
 Coisas necessarias para a primeria entrega do sbi
 
+1- pensar forma de deixar o arquivo .js inacessivel a qualquer um
 
+2- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-1-unir o sistema de loguin ao sistema de autentificação do firebase
-
-2- implementar rotina de criação de novos equipamentos, mudar a forma atual que os equipamentos são adcionados diretamente na pagina
-
-3- pensar forma de deixar o arquivo .js inacessivel a qualquer um
-
-
-5- implemtar as opções "o que deseja fazer na tela home do sistema"
-
-6 preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
+3- preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
 ser disponivel para todos, mas apenas para os gestores que deverão fazer a limpa no sistema quando necessario, mantendo 
 o estoque sempre organizado
 
-7 preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
+4- preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
 hoje quando isso acontece, o equipamento aparece 3 vezes
 
-8- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
+5- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
+
+6- configurar controle de acesso no menu de controle de estoque
+7- implementar rotina de testes para não ocorrer erros, os testes deverão ser realizados sempre antes de um
+commit, para evitar que modificações parem o sistema
+
+8- recarregar pagina quando usuario descarregar para evitar que usuario não autorizado veja as informações de 
+estoque
+9- implementar mensagens de erro ao tentar loguin
+
+10- recarregar a pagina ao logar e deslogar
+
+12- rotina de saida de equipamentos está com problemas, apenas quando o usuario está deslogado
+
+13-retirar a mensagem que mostra o nome do equipamento que estou adcionando antes de prosseguir
+
+14-retirar a mensagem que mostra meu loguin e senha quando vou logar
+
+15- se o cliente for novo deverá antes de começar a fazer o controle de estoque 
+deverá cadastrar os equipamentos que deverão serão monitorados
+
+16- está demorando a atualizar o estoque quando insere novo equipamento
+17- criei um bd de configuração que no momento pode ser lido e escrito por qualquer um, no entando ele deverá 
+ser escrito apenas por usuario autorizado, esse arquivo vai informar que o estoque ja foi inicializado
+
+
 
 
 

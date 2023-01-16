@@ -2,16 +2,17 @@
 
 function default_event() {
    alert('Este recurso ainda não está disponivel!')
+
 }
-/*fim da função de teste de eventos*/
+
 
 
 
 var message = []
 var lista_banco = [] //lista no estoque
+var status_config = ''
+var logado = false
 
-//lista de equipamentos no banco de dados
-lista_devices = []
 
 /*Elementos necessarios para apresentação de dados do banco*/
 var span_geral = document.getElementById('conteudo_estoque').style
@@ -39,6 +40,7 @@ var span_all = document.getElementById('totais')
 
 
 
+
 /*Todas a configuração necessario para que o firebase funcione*/
 const firebaseConfig = {
    apiKey: "AIzaSyDcZJiJTmCSrvr9INI9Z9Zg5n1eSnjcSsw",
@@ -59,15 +61,67 @@ var bank_equipamentos = firebase.database()
 /*banco de estoque no firebase*/
 var bank_enter = firebase.database()
    .ref('Estoque Bilhetagem Serramar');
+
+
+/*banco para configurações*/
+var bank_config = firebase.database()
+   .ref('SBI_config');
 /*Fim das configurações do firebase*/
 
-/*vamos fazer a leitura do que tem no banco de dados logo aqui mesmo*/
 
-function read_to_select(){
-   //lista_banco = []
+
+
+
+//essa função serve para dizer se o usuario está logado ou não
+function islogado() {
+
+   firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+         logado = true
+      } else {
+         //deslogado
+         logado = false
+      }
+   });
+}
+
+
+//função para escrita das configurações no banco de dados
+function write_config(value) {
+   var newMessageRef = bank_config.push();
+   newMessageRef.set(
+      { 'estoque': value }
+   );
+
+}
+
+
+//função para leitura das configuraçãoes no banco de dados
+function read_config() {
+   let status = ''
+   bank_config.on('child_added', function (snapshot) {
+      let valor = snapshot.val()
+      status = valor['estoque']
+
+   });
+
+   return status
+}
+
+
+
+
+
+/*vamos fazer a leitura do que tem no banco de dados logo aqui mesmo*/
+function read_to_select() {
+   let lista = []
+   let select = document.getElementById('eqpms')
    bank_equipamentos.on('child_added', function (snapshot) {
-      lista_devices.push(snapshot.val());
-   }); 
+      let option = document.createElement('option')
+      option.text = snapshot.val();
+      select.appendChild(option)
+   });
+
 }
 
 
@@ -122,10 +176,10 @@ function contador(classe) {
 /*Função para pegar os dados informados pelo usuario*/
 function pega_data(rotina) { //se é entrada ou saida
    var permissão = 0;
-   // alert(permissão)
-   //equipamento
    var select = document.getElementById("eqpms");
    var maq = select.options[select.selectedIndex].text;
+   alert(maq)
+
    if (maq == '') {
       permissão = 1
    }
@@ -161,6 +215,7 @@ function pega_data(rotina) { //se é entrada ou saida
       case 0:
          save_equipamento(maq, ser, dat, matricula, rotina)
 
+
          break
       case 1:
          alert('Escolha uma opção de equipamento!')
@@ -181,6 +236,7 @@ function pega_data(rotina) { //se é entrada ou saida
          alert('Ocorreu um erro desconhecido, tente novamente!')
          break
    }
+   document.location.reload(true);
 }
 /*fim dos dados que serão gravados*/
 
@@ -207,6 +263,7 @@ function verifica_duplicata(lista, serial, tipo) {
       existe = true
    }
    return existe
+
 }
 
 
@@ -216,10 +273,9 @@ function verifica_duplicata(lista, serial, tipo) {
 
 /*Função para salvar os dados no Firebase */
 function save_equipamento(maq, ser, dat, reg, tipo) {
-
    span_geral.display = 'none'
    leitura_data()
-   let status = lista_banco.length
+   let status = read_config()
    var newMessageRef = bank_enter.push();
    var eqm = [maq, ser, dat, reg, tipo]
    let exists = verifica_duplicata(lista_banco, ser, tipo)
@@ -227,15 +283,25 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
    if (exists) {
       alert('informação duplicada, verifique o numero serial e tente novamente!')
    } else {
-      if (status > 0) {
+      if (status == 'init') {
          newMessageRef.set(
             eqm
          );
+         clear_all(tipo)
+         informa_atualização()
       } else {
-         head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+         alert(' verificando se esta logado ou não ' + logado)
+         if (logado == true) {
+            head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+         }
+
+         else {
+            alert('Procure um adminstrador do sistema!')
+            clear_all(tipo)
+
+         }
       }
-      clear_all(tipo)
-      informa_atualização()
+
    }
 }
 /*Fim da função para salvar dados no firebase*/
@@ -254,6 +320,7 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
       heads
    );
    alert('seu espaço de estoque foi criado com sucesso! A seguir vamos adcionar seus primeiros equipamentos!')
+   write_config('init')// configuração será realizada aqui
    save_equipamento(maq, ser, dat, reg, tipo)
 
    if (tipo == 'Entrada') {
@@ -317,7 +384,6 @@ function desfazer_tabela(tabela) {
 
 /*Função que permite  a apresentação dos dados na tela do usuario*/
 function acessar_estoque(classe) {
-  
    span_entrada.display = 'none'
    span_geral.display = 'block'
    span_saida.display = 'none'
@@ -338,7 +404,7 @@ function acessar_estoque(classe) {
 
 /*Função que estilçiza a tela do formulario para o usuario*/
 function acessar_controle(classe) {
-  
+
    span_entrada.display = 'none'
    span_geral.display = 'none'
    span_saida.display = 'none'
@@ -346,7 +412,7 @@ function acessar_controle(classe) {
    estoque = document.getElementById('estoque').style;//estoque
    controle.display = 'block'
    estoque.display = 'none'
-    
+
 }
 /*Fim da funçaõ que permite apresentação da tela de formaulario*/
 
@@ -470,29 +536,12 @@ function apresenta_entradas(classe) {
 
 /**faz as leituras iniciais para o sistema funcionar corretamente */
 function init_read() {
-   leitura_data()
    read_to_select()
-   
-  
+   leitura_data()
+   islogado()
+   read_config()
+
 }
-
-
-/*função para listar as opções do select de equipamentos*/
- function listar_options(){
-  var cp =  document.querySelector('.campos')
-  let select =  document.createElement('select')
-  select.setAttribute('id', 'eqpms')
-  //criando os options
-  
- lista_devices.forEach(element => {
-   let option =document.createElement('option')
-   option.text =  element
-   select.appendChild(option)
- });
-  cp.append(select)
-  
- 
- }
 
 //rotina de verificação de novos equipamentos no banco
 function informa_atualização() {

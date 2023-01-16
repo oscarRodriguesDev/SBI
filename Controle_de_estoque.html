@@ -40,8 +40,8 @@
 		<p style="font-weight: bold;">O que deseja fazer ?</p>
 		<ul>
 			<!--Opções são exclusivas da pagina controle de estoque-->
-			<li><a href="insert_db.html" style="text-decoration:none;color:black">Criar novo equipamento</a></li>
-			<li onclick="acessar_controle('.formulario1')">Informar Transação</li>
+			<li><a href="insert_db.html" id = 'lnk_devices' style="text-decoration:none;color:black">Criar novo equipamento</a></li>
+			<li id = 'ca' onclick="acessar_controle('.formulario1')">Informar Transação</li>
 			<li onclick="acessar_estoque('estoque')">Meu Estoque</li>
 			<li onclick="apresenta_saidas('estoque')">Historico de retiradas</li>
 			<li onclick="apresenta_entradas('estoque')">Historico de entradas</li>
@@ -65,7 +65,23 @@
 				<label id="label3">Data:</label>
 				<br>
 				<span class="campos">
-					<select name="equipamentos" id="eqpms" form="controle" onfocus=" listar_options()">
+					<select name="equipamentos" id="eqpms" form="controle">
+						<!--
+						<option>Painel de motorista</option>
+						<option>Fonte Para painel do motorista</option>
+						<option>Frontal CCIT</option>
+						<option>Connection CCIT</option>
+						<option>Upex</option>
+						<option>Antena da upex</option>
+						<option>GPS(upex)</option>
+						<option>Fonte PCB Upex</option>
+						<option>Camera</option>
+						<option>Fonte de Camera</option>
+						<option>Maquina Cielo</option>
+						<option>Controlador Mobitec</option>
+						<option>Controlador FRT</option>
+						-->
+
 					</select>
 					<span><input type="number" id="serial"></span>
 					<span><input type="date" id="data"></span>
@@ -76,6 +92,7 @@
 				</span>
 			</form>
 		</section>
+
 		<!--seção do estoque armazenado-->
 		<section id="estoque">
 			<span id="conteudo_estoque">
@@ -94,15 +111,42 @@
 		<!--fim da seção do estoque armazenado-->
 		<!--seção do rodape-->
 	</section>
+
 	<footer class="rodape">
 		<p>Todos os direitos reservados &#169</p>
 		<div id='version'>
 			<p>Versão 1.0.0 beta</p>
 		</div>
 	</footer>
+	<!--cria uma rotina de loguin obrigatoria quando o usuario tentar realizar uma leitura de dados-->
+	<span id="sugest_loguin" onclick="chamar_loguin()">Logar Para ter total acesso?<br></span>
+	<span id="sugest_logout" onclick="logout()">Sair?<br></span>
+	
+	
+	<section class="loguin_routine">
+		<div class="protection">proteção</div>
+		<!--Tela de loguin para que o usuario possa usar 100% do sistema
+	ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
+
+		<section class="loguin">
+			<span id="loguin_title">Loguin</span><br>
+			<span id="loguin_words">E-mail</span><br>
+			<span> <input type="text" id="user"> </span><br>
+			<span id="loguin_words">Senha</span><br>
+			<span> <input type="Password" id="senha"> </span><br>
+			<span> <input type="button" value="Logar" onclick="logar()"></span>
+			<span> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br>
+			<!--Botão para sair vai ser um "x"-->
+
+			<span id="loguin_rec"><a href="#">Recuperar dados de acesso</a>
+			</span><br>
+		</section>
+
 	</section>
+	<!--aqui termina a rotina obrigatoria de loguin-->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
 	</script>
 	<script src="systembi.js"></script>
+	<script src="systembi_loguin.js"></script>
 </body>
 </html>

@@ -15,6 +15,10 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+/*vamos precisar verificar se usuario esta logado
+ para dar acesso a outras funcionalidades do sistema ou não*/
 
-
+ function verifica_loguin() {
+  
+ }
 
