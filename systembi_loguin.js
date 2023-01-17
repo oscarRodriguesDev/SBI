@@ -20,6 +20,7 @@ function verifica_loguin() {
         bloqueio.display =  'block'
         style_log.left =  '85%'
         lnk_add_new_device.href = '#'
+       
     }
   });
 }
@@ -54,20 +55,22 @@ function logar() {
     let bloqueio = document.querySelector(".loguin_routine").style
     var loguin = document.getElementById('user').value
     var senha = document.getElementById('senha').value
-    alert("loguin: "+loguin+ " senha: "+senha)
     firebase.auth().signInWithEmailAndPassword(loguin, senha)
   .then((userCredential) => {
     // Signed in
     var user = userCredential.user;
     bloqueio.display ='none'
-    
-    
+    alert('Conectado com sucesso!')
+    window.location.reload()
     // ...
   })
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
+    document.getElementById('user').value = ''
+    document.getElementById('senha').value =''
     console.log(error)
+    alert('Não foi possivel efetuar o Loguin, usuario ou senha incorretos, tente novamente!')
   });
   
 }
@@ -100,17 +103,23 @@ function cancelar_loguin() {
 function logout(){
 
   firebase.auth().signOut().then(() => {
-    alert('Usuario saiu')
+    alert('Usuario foi desconectado')
     let bt_out=  document.getElementById('sugest_logout').style
     bt_out.display =  'none'
     let status_loguin =  document.getElementById('sugest_loguin')
     status_loguin.innerText  = 'Logar Para ter total acesso?'
+    window.location.reload()
 
 
   }).catch((error) => {
-    // An error happened.
+    alert('Ocorreu um erro ao tentar sair!')
   });
   
 }
 
 
+document.addEventListener('keypress', function(e){
+  if(e.which == 13){
+    logar()
+  }
+}, false);

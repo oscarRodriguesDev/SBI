@@ -1,10 +1,14 @@
 /*função para bloqueio dos recursos ainda não disponibilizados*/
 
 function default_event() {
-   alert('Este recurso ainda não está disponivel!')
+  alert('indisponivel no momento')
 
 }
-
+function msg_negative(){
+   if(!logado){
+      alert('Usuário não autorizado!')
+   }
+}
 
 
 
@@ -74,13 +78,12 @@ var bank_config = firebase.database()
 
 //essa função serve para dizer se o usuario está logado ou não
 function islogado() {
-
    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
          logado = true
       } else {
          //deslogado
-         logado = false
+         logado = false   
       }
    });
 }
@@ -127,8 +130,10 @@ function read_to_select() {
 
 
 function contador(classe) {
+   if(!logado){
+      alert('Usuário não autorizado!')
+   }else{
    span_saida.display = 'none'
-
    /*separando os itens do banco*/
    lista_banco = []
    leitura_data()
@@ -166,7 +171,7 @@ function contador(classe) {
    controle.display = 'none'
    span_totais.display = 'block'
    span_entrada.display = 'none'
-}
+}}
 
 
 
@@ -178,13 +183,9 @@ function pega_data(rotina) { //se é entrada ou saida
    var permissão = 0;
    var select = document.getElementById("eqpms");
    var maq = select.options[select.selectedIndex].text;
-   alert(maq)
-
    if (maq == '') {
       permissão = 1
    }
-
-
    //serial
    var text = document.getElementById("serial");
    var ser = text.value
@@ -384,16 +385,20 @@ function desfazer_tabela(tabela) {
 
 /*Função que permite  a apresentação dos dados na tela do usuario*/
 function acessar_estoque(classe) {
-   span_entrada.display = 'none'
-   span_geral.display = 'block'
-   span_saida.display = 'none'
-   span_totais.display = 'none'
-   apresentarData(lista_banco)
-   lista_banco = []
-   estoque = document.getElementById(classe).style;//estoque
-   controle = document.querySelector('.formulario1').style;
-   estoque.display = 'block'
-   controle.display = 'none'
+   if (!logado) {
+      alert('Usuario não autorizado!')
+   } else {
+      span_entrada.display = 'none'
+      span_geral.display = 'block'
+      span_saida.display = 'none'
+      span_totais.display = 'none'
+      apresentarData(lista_banco)
+      lista_banco = []
+      estoque = document.getElementById(classe).style;//estoque
+      controle = document.querySelector('.formulario1').style;
+      estoque.display = 'block'
+      controle.display = 'none'
+   }
 }
 /*Fim da função que mostra a apresentação de dados na tela*/
 
@@ -465,6 +470,9 @@ function criarTabela(conteudo) {
 
 /*função utilizada para recolher apenas as saidas de equipamentos*/
 function apenas_saidas() {
+   if(!logado){
+   alert('Usuário não autorizado!')
+   }else{
    leitura_data()
    let lista_saida = []
    lista_saida = [['Data', 'Equipamento', 'Serial']]
@@ -473,7 +481,7 @@ function apenas_saidas() {
          lista_saida.push([element[2], element[0], element[1]])
       }
    });
-
+   }
    return lista_saida
 }
 
@@ -485,6 +493,7 @@ function apenas_saidas() {
 /*responsavel por apresentar as saidas recentes, devo armazenar em um local onde 
 posso controlar a quantidade de saidas armazenadas*/
 function apresenta_saidas(classe) {
+
    span_entrada.display = 'none'
    span_totais.display = 'none'
    tabela_saida = criarTabela(apenas_saidas())
@@ -503,6 +512,9 @@ function apresenta_saidas(classe) {
 
 /*função utilizada para recolher apenas as entradas de equipamentos*/
 function apenas_entradas() {
+  if(!logado){
+   alert('Usuário não autorizado')
+  }else{
    leitura_data()
    let lista_entrada = []
    lista_entrada = [['Data', 'Equipamento', 'Serial']]
@@ -511,7 +523,7 @@ function apenas_entradas() {
          lista_entrada.push([element[2], element[0], element[1]])
       }
    });
-
+  }
    return lista_entrada
 }
 
@@ -540,11 +552,12 @@ function init_read() {
    leitura_data()
    islogado()
    read_config()
+  
 
 }
 
 //rotina de verificação de novos equipamentos no banco
 function informa_atualização() {
-   alert('Atualize a pagina e veja as alterações mais recentes')
+   alert('Sucesso!')
 }
 

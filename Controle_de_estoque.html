@@ -40,15 +40,16 @@
 		<p style="font-weight: bold;">O que deseja fazer ?</p>
 		<ul>
 			<!--Opções são exclusivas da pagina controle de estoque-->
-			<li><a href="insert_db.html" id = 'lnk_devices' style="text-decoration:none;color:black">Criar novo equipamento</a></li>
-			<li id = 'ca' onclick="acessar_controle('.formulario1')">Informar Transação</li>
-			<li onclick="acessar_estoque('estoque')">Meu Estoque</li>
+			<li onclick =  'msg_negative()'><a href="insert_db.html" id='lnk_devices' style="text-decoration:none;color:black">Criar novo
+					equipamento</a></li>
+			<li onclick="acessar_controle('.formulario1')">Informar Transação</li>
+			<li id= "acess_control" onclick="acessar_estoque('estoque')">Meu Estoque</li>
 			<li onclick="apresenta_saidas('estoque')">Historico de retiradas</li>
-			<li onclick="apresenta_entradas('estoque')">Historico de entradas</li>
-			<li onclick="contador('estoque')">Totais</li>
+			<li id= "acess_control" onclick="apresenta_entradas('estoque')">Historico de entradas</li>
+			<li id= "acess_control" onclick="contador('estoque')">Totais</li>
 			<!--li onclick="listar_options()">aparecer select</li-->
 			<!--adcionar mais perguntas ao longo do desenvolvimento-->
-
+	
 		</ul>
 	</section>
 	<!--fim das informações importantes-->
@@ -66,21 +67,6 @@
 				<br>
 				<span class="campos">
 					<select name="equipamentos" id="eqpms" form="controle">
-						<!--
-						<option>Painel de motorista</option>
-						<option>Fonte Para painel do motorista</option>
-						<option>Frontal CCIT</option>
-						<option>Connection CCIT</option>
-						<option>Upex</option>
-						<option>Antena da upex</option>
-						<option>GPS(upex)</option>
-						<option>Fonte PCB Upex</option>
-						<option>Camera</option>
-						<option>Fonte de Camera</option>
-						<option>Maquina Cielo</option>
-						<option>Controlador Mobitec</option>
-						<option>Controlador FRT</option>
-						-->
 
 					</select>
 					<span><input type="number" id="serial"></span>
@@ -130,15 +116,18 @@
 
 		<section class="loguin">
 			<span id="loguin_title">Loguin</span><br>
-			<span id="loguin_words">E-mail</span><br>
+			
+			<span id="word_mail">E-mail</span><br>
 			<span> <input type="text" id="user"> </span><br>
-			<span id="loguin_words">Senha</span><br>
+			<span id="word_pass">Senha</span><br>
 			<span> <input type="Password" id="senha"> </span><br>
-			<span> <input type="button" value="Logar" onclick="logar()"></span>
-			<span> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br>
+			
+			<span id = "bt_log"> <input type="button" value="Logar" onclick="logar()"></span>
+			<!--span id = "bt_after"> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br-->
+			
 			<!--Botão para sair vai ser um "x"-->
 
-			<span id="loguin_rec"><a href="#">Recuperar dados de acesso</a>
+			<!--span id="loguin_rec"><a href="#">Recuperar dados de acesso</a-->
 			</span><br>
 		</section>
 

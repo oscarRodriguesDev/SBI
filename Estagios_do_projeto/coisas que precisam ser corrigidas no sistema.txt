@@ -13,28 +13,31 @@ hoje quando isso acontece, o equipamento aparece 3 vezes
 
 5- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
 
-6- configurar controle de acesso no menu de controle de estoque
-7- implementar rotina de testes para não ocorrer erros, os testes deverão ser realizados sempre antes de um
+
+6- implementar rotina de testes para não ocorrer erros, os testes deverão ser realizados sempre antes de um
 commit, para evitar que modificações parem o sistema
 
-8- recarregar pagina quando usuario descarregar para evitar que usuario não autorizado veja as informações de 
-estoque
-9- implementar mensagens de erro ao tentar loguin
 
-10- recarregar a pagina ao logar e deslogar
+7- se o cliente for novo deverá antes de começar a fazer o controle de estoque 
+deverá cadastrar os equipamentos que deverão serão monitorados, devo informar isso para o usuario
 
-12- rotina de saida de equipamentos está com problemas, apenas quando o usuario está deslogado
+8- está demorando a atualizar o estoque quando insere novo equipamento
 
-13-retirar a mensagem que mostra o nome do equipamento que estou adcionando antes de prosseguir
 
-14-retirar a mensagem que mostra meu loguin e senha quando vou logar
+9- implementar update e delete dos equipamentos e apenas o gerenciador da equipe vai poder apagar
 
-15- se o cliente for novo deverá antes de começar a fazer o controle de estoque 
-deverá cadastrar os equipamentos que deverão serão monitorados
+10- associar email de usuarios com um nome de usuario escolhido previamente
 
-16- está demorando a atualizar o estoque quando insere novo equipamento
-17- criei um bd de configuração que no momento pode ser lido e escrito por qualquer um, no entando ele deverá 
-ser escrito apenas por usuario autorizado, esse arquivo vai informar que o estoque ja foi inicializado
+11-mudar a forma como o usuario é identificado para realizar entradas e saidas, atualmente ele pergunta o nome,
+mas ele ira pegar a infomação pelo loguin
+
+12 informar ao usuario caso ele tente retirar um equipamento que não esteja no estoque
+
+13- minhas entradas e saidas estão apresentando os mesmos  resultados
+
+14- esta considerando entradas e saidas para verificar se ha duplicatas
+
+
 
 
 

@@ -90,57 +90,114 @@
 /*estilos da telinha de loguin*/
 .loguin_routine {
 
-	display: none;
+	display: block;
+	
 }
 
 .protection {
-	display: none;
+	display: block;
+	opacity:0.8;
+
+}
+
+ #sugest_loguin{
+	display:none;
+}
+
+
+#sugest_logout{
+	position: fixed;
+	color:white;
+	top:95%;
+	left:auto;
+	font-size:130%;
+	font-weight:bold;
 
 }
 
 .loguin {
-	position: fixed;
-	color: blue;
-	text-align: center;
-	border: solid 2px blue;
-	background-color: #E0FFFF;
-	padding: 0.3%;
-	left: 40%;
-	top: 35%;
-	border-radius: 1%;
-	display: none;
-
+position:fixed;
+background-color:white;
+width: 99%;
+left:auto;
+height:40%;
+bottom:50%;
 
 }
 
 #loguin_title {
-	color: black;
-	border-radius: 1%;
-	background-image: linear-gradient(grey, white, grey);
 	position: fixed;
-	border-bottom: 1px solid black;
-	left: 40.15%;
-	width: 13.6%;
+	left:0.1%;
+	width:70.3%;
+	bottom:62%;
+	font-size:150%;
 	font-weight: bold;
-	bottom: 61.6%;
-	display: none;
-
 }
 
-#loguin_words {
+
+#word_mail {
+
 	position: fixed;
-	left: 40.2%;
-	width: 13.6%;
+	font-size:150%;
+	left:40%;
+	display:block;
+	font-weight: bold;
+}
+
+#word_pass {
+	position: fixed;
+	font-size:150%;
+	top:49%;
+	left:40%;
+	display:block;
+	font-weight: bold;
+}
+
+#senha{
+	position:fixed;
+	font-size: 150%;
+	top:53%;
+	left:1%;
+	width:96%;
+	height:8%;
+	display:block;
+	font-weight: bold;
+   
+	
+}
+
+#user{
+	position:fixed;
+	font-size: 150%;
+	left:1%;
+	width:96%;
+	height:7%;
+	top:41%;
+	display:block;
+	font-weight: bold;
+}
+
+#bt_log input{
+	position: fixed;
+	font-size: 150%;
+	top:70%;
+	left:30%;
+	padding:1%;
+	width:40%;
+	display: block;
+	border-radius:10px;
+	font-weight: bold;
+}
+#bt_after input{
+	position: fixed;
+	font-size: 150%;
+	top:70%;
+	left:55%;
 	display: none;
+	font-weight: bold;
 }
 
 #loguin_rec {
-	position: fixed;
-	left: 43.1%;
-	width: 13.6%;
-	bottom: 42%;
-	font-size: 55%;
-	font-weight: bold;
 	display: none;
 }
 
