@@ -325,25 +325,31 @@ color:rgb(252, 250, 200);
 	text-align: center;
 	border: solid 2px blue;
 	background-color: #E0FFFF;
-	padding:1px;
-	left: 40%;
+	padding:0.01px;
+	left: 40.1%;
 	top: 35%;
 	border-radius: 1%;
+	width:170px;
 	
 }
 
 #loguin_title {
 	color: black;
 	border-radius: 1px;
+	border:2px solid blue;
+	border-bottom:none;
 	background-image: linear-gradient(grey, white, grey);
 	padding-left: 60px;
-	padding-right: 60px;
+	padding-right: 61px;
+	margin-left:-2px;
+	padding-top:10%;
+	padding-bottom:auto;
 	position: static;
-	left: 553px;
-	width:185px;
 	text-align: center;
 	font-weight: bold;
 	bottom:385px;
+	
+	
 
 }
 
@@ -361,6 +367,29 @@ color:rgb(252, 250, 200);
 	bottom: 42%;
 	font-size: 55%;
 	font-weight: bold;
+}
+
+#ex input {
+	position:fixed;
+	bottom:64.5%;
+	font-weight: bold;
+	text-align: center;
+	left:52.5%;
+	color:red;
+	background-color: rgba(255, 23, 55, 0.0);
+	border:none;
+	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif;
+	font-size:100%;
+	
+	
+}
+
+#bt_log input{
+	position:fixed;
+	bottom: 235px;
+	left:560px;
+	
+	
 }
 
 /*fim dos estilos da telinha de loguin*/
@@ -508,6 +537,17 @@ color:rgb(252, 250, 200);
 #conteudo_saida{
 	display:none;
 }
+
+#conteudo_saida input{
+	position:fixed;
+	right:26.8%;
+	top:84%;
+	padding-left:24.9%;
+	padding-right:24.8%;
+	
+}
+
+
 
 #conteudo_entrada{
 	display:none;

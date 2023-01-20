@@ -15,6 +15,7 @@ function msg_negative(){
 var message = []
 var lista_banco = [] //lista no estoque
 var status_config = ''
+var lista_estoque=[]
 var logado = false
 
 
@@ -62,7 +63,7 @@ firebase.initializeApp(firebaseConfig);
 var bank_equipamentos = firebase.database()
    .ref('Equipamentos');
 
-/*banco de estoque no firebase*/
+/*banco de entrada estoque no firebase*/
 var bank_enter = firebase.database()
    .ref('Estoque Bilhetagem Serramar');
 
@@ -117,12 +118,13 @@ function read_config() {
 
 /*vamos fazer a leitura do que tem no banco de dados logo aqui mesmo*/
 function read_to_select() {
-   let lista = []
+  
    let select = document.getElementById('eqpms')
    bank_equipamentos.on('child_added', function (snapshot) {
       let option = document.createElement('option')
       option.text = snapshot.val();
       select.appendChild(option)
+     
    });
 
 }
@@ -194,6 +196,7 @@ function pega_data(rotina) { //se é entrada ou saida
    }
 
    //data
+ 
    var data = document.getElementById("data");
    var dat = data.value;
    if (dat == '') {
@@ -255,19 +258,25 @@ function verifica_duplicata(lista, serial, tipo) {
    for (let index = 0; index < lista.length; index++) {
       let numero = lista[index][1];
       let transação = lista[index][4]
-
       if (numero == serial && transação == tipo) {
          obs = true
+         if (tipo == 'Entrada') {
+            alert('Aparentemente outro usuario ja adcionou esse equipamento antes,\n confira o numero serial antes de tentar novamente')
+         } else if(tipo=='Saida') {
+           
+            alert('Esse equipamento não está no estoque, confira o numero serial antes de tentar novamente!')
+         }else{
+            alert('Não consegui realizar o procedimento solicitado contate o suporte!')
+         }
       }
-   }
+      }
+   
+
    if (obs) {
       existe = true
    }
    return existe
-
 }
-
-
 
 
 
@@ -282,16 +291,23 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
    let exists = verifica_duplicata(lista_banco, ser, tipo)
    /*ação caso exista ou não*/
    if (exists) {
-      alert('informação duplicada, verifique o numero serial e tente novamente!')
+      //nada
    } else {
       if (status == 'init') {
          newMessageRef.set(
             eqm
          );
+         if(tipo=='Saida'){
+            del_if_exit(ser)
+         }
+
+       //por enquanto vou somente salvar nessa lista, futuramente sera a lista de historicos de retirada mostrada
+       //ao usuario so vai executar se o tipo for (*Saida)
+    
          clear_all(tipo)
          informa_atualização()
       } else {
-         alert(' verificando se esta logado ou não ' + logado)
+       
          if (logado == true) {
             head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
          }
@@ -315,7 +331,7 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
 /*Função para salvar o cabeçalho da tabela no banco de dados*/
 function head_generator(heads, maq, ser, dat, reg, tipo) {
    var eqm = [maq, ser, dat, reg, tipo]
-   alert('Seu espaço de estoque ainda não foi criado, mas não se preocupe estaremos criando para você agora!')
+  
    var newMessageRef = bank_enter.push();
    newMessageRef.set(
       heads
@@ -331,8 +347,10 @@ function head_generator(heads, maq, ser, dat, reg, tipo) {
       clear_all(tipo)
       leitura_data()
    } else {
+
       //mostrar mensagem de saida de equipamento
       alert(maq + ' foi retirado do estoque com sucesso por ' + reg)
+      del_if_exit(ser)
       clear_all(tipo)
       leitura_data()
    }
@@ -350,6 +368,7 @@ function leitura_data() {
    lista_banco = []
    bank_enter.on('child_added', function (snapshot) {
       lista_banco.push(snapshot.val());
+      
    });
 }
 /*Fim da função para leitura de dados no firebase*/
@@ -481,12 +500,9 @@ function apenas_saidas() {
          lista_saida.push([element[2], element[0], element[1]])
       }
    });
-   }
    return lista_saida
+   }
 }
-
-
-
 
 
 
@@ -523,9 +539,9 @@ function apenas_entradas() {
          lista_entrada.push([element[2], element[0], element[1]])
       }
    });
-  }
    return lista_entrada
 }
+  }
 
 
 
@@ -548,16 +564,54 @@ function apresenta_entradas(classe) {
 
 /**faz as leituras iniciais para o sistema funcionar corretamente */
 function init_read() {
+   let data = document.getElementById('data')
+   var today = new Date()
+   now = today.toLocaleDateString("pt-BR");
+   data.value = now
    read_to_select()
    leitura_data()
    islogado()
    read_config()
-  
-
 }
+
+
+
+
 
 //rotina de verificação de novos equipamentos no banco
 function informa_atualização() {
    alert('Sucesso!')
 }
 
+
+
+
+//metodo para deletar equipamentos do banco
+function del_if_exit(serial){
+   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var key = childSnapshot.key;
+    var value = childSnapshot.val();
+    //antes disso salvar lista para saida com duração limitada
+   if(value[1]==serial&&value[4]=='Entrada'){
+      firebase.database().ref('Estoque Bilhetagem Serramar/'+key).remove()
+   }
+  });
+});
+}
+
+
+//função para apagar o historico de saidas
+function clear_exit_history(){
+   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var key = childSnapshot.key;
+        var value = childSnapshot.val();
+        //antes disso salvar lista para saida com duração limitada
+       if(value[4]=='Saida'){
+          firebase.database().ref('Estoque Bilhetagem Serramar/'+key).remove()
+       }
+      });
+    });
+    location.reload()
+}

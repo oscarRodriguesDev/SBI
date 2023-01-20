@@ -70,7 +70,7 @@
 
 					</select>
 					<span><input type="number" id="serial"></span>
-					<span><input type="date" id="data"></span>
+					<span><input tipe ="text" readonly=“true” id="data"></span>
 					<div class="buttons">
 						<input type="button" id="entrada" value="Regitrar Entrada" onclick="pega_data('Entrada')">
 						<input type="button" id="saida" value="Regitrar Saída" onclick="pega_data('Saida')">
@@ -86,6 +86,8 @@
 			</span>
 			<span id="conteudo_saida">
 				<h3>Saidas de equipamentos</h3>
+				<span id="btclear_exit"><input  type="button" value="Limpar" onclick="clear_exit_history()"></span>
+				
 			</span>
 			<span id="conteudo_entrada">
 				<h3>Entradas de equipamentos</h3>
@@ -115,7 +117,7 @@
 	ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
 
 		<section class="loguin">
-			<span id="loguin_title">Loguin</span><br>
+			<span id="loguin_title"><h5>Loguin</h5></span><br>
 			
 			<span id="word_mail">E-mail</span><br>
 			<span> <input type="text" id="user"> </span><br>
@@ -124,7 +126,7 @@
 			
 			<span id = "bt_log"> <input type="button" value="Logar" onclick="logar()"></span>
 			<!--span id = "bt_after"> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br-->
-			
+				<span id = "ex"> <input type="button" value="x" onclick="cancelar_loguin()"></span><br>
 			<!--Botão para sair vai ser um "x"-->
 
 			<!--span id="loguin_rec"><a href="#">Recuperar dados de acesso</a-->

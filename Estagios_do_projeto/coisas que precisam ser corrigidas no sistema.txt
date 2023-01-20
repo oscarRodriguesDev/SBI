@@ -4,10 +4,6 @@ Coisas necessarias para a primeria entrega do sbi
 
 2- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-3- preciso de uma opção que elimine do banco de dados os equipamentos retirados, porem essa opção não podera
-ser disponivel para todos, mas apenas para os gestores que deverão fazer a limpa no sistema quando necessario, mantendo 
-o estoque sempre organizado
-
 4- preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
 hoje quando isso acontece, o equipamento aparece 3 vezes
 
@@ -18,24 +14,25 @@ hoje quando isso acontece, o equipamento aparece 3 vezes
 commit, para evitar que modificações parem o sistema
 
 
-7- se o cliente for novo deverá antes de começar a fazer o controle de estoque 
-deverá cadastrar os equipamentos que deverão serão monitorados, devo informar isso para o usuario
+7-Fazer um script de tutorial para configuração do sistema para novos usuarios
 
 8- está demorando a atualizar o estoque quando insere novo equipamento
 
 
-9- implementar update e delete dos equipamentos e apenas o gerenciador da equipe vai poder apagar
-
 10- associar email de usuarios com um nome de usuario escolhido previamente
 
 11-mudar a forma como o usuario é identificado para realizar entradas e saidas, atualmente ele pergunta o nome,
-mas ele ira pegar a infomação pelo loguin
+mas ele ira pegar a infomação pelo loguin 
 
-12 informar ao usuario caso ele tente retirar um equipamento que não esteja no estoque
+12-tirar o x da telinha de loguin do app movel
 
-13- minhas entradas e saidas estão apresentando os mesmos  resultados
+14- botão da tela de loguin ficou pequeno no movel
 
-14- esta considerando entradas e saidas para verificar se ha duplicatas
+
+
+
+
+
 
 
 

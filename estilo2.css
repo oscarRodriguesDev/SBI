@@ -124,14 +124,21 @@ height:40%;
 bottom:50%;
 
 }
-
+#loguin_title h5{
+position:fixed;
+top:21%;
+right:35%;
+font-weight: bold;
+font-size:200%;
+}
 #loguin_title {
 	position: fixed;
 	left:0.1%;
 	width:70.3%;
 	bottom:62%;
-	font-size:150%;
 	font-weight: bold;
+	margin-bottom: 10px;
+	height:7%;
 }
 
 
@@ -177,6 +184,9 @@ bottom:50%;
 	font-weight: bold;
 }
 
+#ex input{
+	display:none;
+}
 #bt_log input{
 	position: fixed;
 	font-size: 150%;
@@ -187,6 +197,7 @@ bottom:50%;
 	display: block;
 	border-radius:10px;
 	font-weight: bold;
+	height:40px;
 }
 #bt_after input{
 	position: fixed;
@@ -195,6 +206,7 @@ bottom:50%;
 	left:55%;
 	display: none;
 	font-weight: bold;
+	
 }
 
 #loguin_rec {
