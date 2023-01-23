@@ -116,22 +116,19 @@
 		<!--Tela de loguin para que o usuario possa usar 100% do sistema
 	ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
 
-		<section class="loguin">
-			<span id="loguin_title"><h5>Loguin</h5></span><br>
-			
-			<span id="word_mail">E-mail</span><br>
-			<span> <input type="text" id="user"> </span><br>
-			<span id="word_pass">Senha</span><br>
-			<span> <input type="Password" id="senha"> </span><br>
-			
-			<span id = "bt_log"> <input type="button" value="Logar" onclick="logar()"></span>
-			<!--span id = "bt_after"> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br-->
-				<span id = "ex"> <input type="button" value="x" onclick="cancelar_loguin()"></span><br>
-			<!--Botão para sair vai ser um "x"-->
-
-			<!--span id="loguin_rec"><a href="#">Recuperar dados de acesso</a-->
-			</span><br>
-		</section>
+	<section class="loguin">
+		<div id= "caixa_loguin">
+		<span id="loguin_title">Loguin</span><br>
+		<span id="loguin_email">E-mail</span><br>
+		<span> <input type="text" id="user"> </span><br>
+		<span id="loguin_pass">Senha</span><br>
+		<span> <input type="Password" id="senha"> </span><br>
+		<span id="bt_log"> <input type="button" value="Logar" onclick="logar()"></span>
+		<!--span id = "bt_after"> <input type="button" value="Depois" onclick="cancelar_loguin()"></span><br-->
+		<span id = "ex"> <input type="button" value="x" onclick="cancelar_loguin()"></span><br>
+		</span><br>
+	</div>
+	</section>
 
 	</section>
 	<!--aqui termina a rotina obrigatoria de loguin-->

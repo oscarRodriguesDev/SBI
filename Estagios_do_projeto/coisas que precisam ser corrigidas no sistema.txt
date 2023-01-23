@@ -4,29 +4,27 @@ Coisas necessarias para a primeria entrega do sbi
 
 2- implemtar as opções "o que deseja fazer na tela home do sistema"
 
-4- preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
+3- preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
 hoje quando isso acontece, o equipamento aparece 3 vezes
 
-5- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
+4- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
 
 
-6- implementar rotina de testes para não ocorrer erros, os testes deverão ser realizados sempre antes de um
+5- implementar rotina de testes para não ocorrer erros, os testes deverão ser realizados sempre antes de um
 commit, para evitar que modificações parem o sistema
 
 
-7-Fazer um script de tutorial para configuração do sistema para novos usuarios
-
-8- está demorando a atualizar o estoque quando insere novo equipamento
+6-Fazer um script de tutorial para configuração do sistema para novos usuarios
 
 
-10- associar email de usuarios com um nome de usuario escolhido previamente
+9- fazer loguin usando o nome de usuario, apresentar o nome de usuario no local e na hora de salvar
+as transações no banco
 
-11-mudar a forma como o usuario é identificado para realizar entradas e saidas, atualmente ele pergunta o nome,
+10-mudar a forma como o usuario é identificado para realizar entradas e saidas, atualmente ele pergunta o nome,
 mas ele ira pegar a infomação pelo loguin 
+11- concertar o layout da telinha de loguin
 
-12-tirar o x da telinha de loguin do app movel
 
-14- botão da tela de loguin ficou pequeno no movel
 
 
 

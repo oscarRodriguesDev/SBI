@@ -328,30 +328,25 @@ color:rgb(252, 250, 200);
 	padding:0.01px;
 	left: 40.1%;
 	top: 35%;
-	border-radius: 1%;
-	width:170px;
+	border-radius: 3px;
+	width:180px;
+	
 	
 }
 
 #loguin_title {
+	position:static;
 	color: black;
-	border-radius: 1px;
-	border:2px solid blue;
-	border-bottom:none;
-	background-image: linear-gradient(grey, white, grey);
-	padding-left: 60px;
-	padding-right: 61px;
-	margin-left:-2px;
-	padding-top:10%;
-	padding-bottom:auto;
-	position: static;
-	text-align: center;
+	top:29.25%;
+	width:13.3%;
+	left:40.2%;
+	padding-bottom:0.7%;
+	padding-top:0.7%;
+	border-radius: 1%;
 	font-weight: bold;
-	bottom:385px;
-	
-	
-
 }
+
+
 
 #loguin_words {
 	position: static;
@@ -359,6 +354,8 @@ color:rgb(252, 250, 200);
 	width: 13.6%;
 	font-weight: bold;
 }
+
+
 
 #loguin_rec {
 	position: static;
@@ -369,27 +366,31 @@ color:rgb(252, 250, 200);
 	font-weight: bold;
 }
 
+
+
+
 #ex input {
-	position:fixed;
-	bottom:64.5%;
+	position:absolute;
 	font-weight: bold;
-	text-align: center;
-	left:52.5%;
+	top:1%;
+	left:1%;
 	color:red;
-	background-color: rgba(255, 23, 55, 0.0);
+	background-color: rgba(248, 239, 240, 0.0);
 	border:none;
+	border-radius: 5px;
 	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif;
 	font-size:100%;
-	
-	
 }
 
+
+
+
+
+
 #bt_log input{
-	position:fixed;
-	bottom: 235px;
-	left:560px;
-	
-	
+	position:absolute;
+	top:80%;
+	left:40%;
 }
 
 /*fim dos estilos da telinha de loguin*/
@@ -409,7 +410,6 @@ color:rgb(252, 250, 200);
 	height: 38%;
 	border-radius: 5px;
 	opacity: 0.9;
-
 }
 
 .formulario1 label {
@@ -422,14 +422,10 @@ color:rgb(252, 250, 200);
 	color: white;
 	width: 60%;
 	text-align: center;
-
-
 }
 
 .formulario1 #label1 {
 	top: 22%;
-
-
 }
 
 .formulario1 #label2 {
@@ -447,7 +443,6 @@ color:rgb(252, 250, 200);
 	left: 17%;
 	padding: 0.7%;
 	top: 28.2%;
-
 }
 
 .formulario1 #serial {
@@ -469,7 +464,6 @@ color:rgb(252, 250, 200);
 .buttons {
 	position: fixed;
 	bottom: 20%;
-
 }
 
 .buttons #entrada {
@@ -478,7 +472,6 @@ color:rgb(252, 250, 200);
 	position: fixed;
 	padding: 0.5%;
 	left: 39.3%;
-
 }
 
 .buttons #saida {
@@ -487,7 +480,6 @@ color:rgb(252, 250, 200);
 	position: fixed;
 	padding: 0.5%;
 	left: 48.3%;
-
 }
 
 /*fim do estilo do formulario do controle de estoque*/
@@ -514,11 +506,9 @@ color:rgb(252, 250, 200);
 #tabela_estoque tr {
 	/*border:1px solid black;*/
 	padding-left: auto;
-
 }
 
 #tabela_estoque td {
-
 	border: 1px solid black;
 	font-weight: bold;
 	font-size: 80%;
@@ -531,12 +521,17 @@ color:rgb(252, 250, 200);
 	border: 1px solid black;
 	font-size: 80%;
 }
+
+
 #conteudo_estoque{
 	display:none;
 }
+
+
 #conteudo_saida{
 	display:none;
 }
+
 
 #conteudo_saida input{
 	position:fixed;
@@ -544,7 +539,6 @@ color:rgb(252, 250, 200);
 	top:84%;
 	padding-left:24.9%;
 	padding-right:24.8%;
-	
 }
 
 
@@ -553,11 +547,14 @@ color:rgb(252, 250, 200);
 	display:none;
 }
 
+
+
 #totais{
 	display:none;
 }
-
 /*fim dos estilos da tela de estoque*/
+
+
 
 /*Estilo para a pagina de insert bank */
 #insert_bank{
@@ -569,23 +566,31 @@ color:rgb(252, 250, 200);
 	padding-left:auto;
 	padding-right:1%;
 	padding-bottom:1%;
-	padding-top: 1%;
-	
+	padding-top: 1%;	
 }
+
+
 #insert_bank #text_input{
 	width: 80%;
 	left:10%;
 	font-size: 150%;
 }
+
+
 #insert_bank label{
 	position:fixed;
 	font-size: 110%;
 	left:27%;
 	bottom: 59%;
 }
+
+
+
 #Insert_in_bank{
 	font-size: 100%;
 }
+
+
 
 #voltar{
 	position:fixed;

@@ -1,6 +1,7 @@
 /*Função responsavel por logar o usuario no sistema e dar acesso as funcionalidades privadas*/
 
 /*verifica se o usuario está logado*/
+
 verifica_loguin()
 function verifica_loguin() {
   
@@ -9,10 +10,10 @@ function verifica_loguin() {
     let style_log =  document.getElementById('sugest_loguin').style
     
     if (user) {
-     let status_loguin =  document.getElementById('sugest_loguin')
-      status_loguin.innerText  = pegar_usuario() +' conectado'
+     //let status_loguin =  document.getElementById('sugest_loguin')
+      //status_loguin.innerText  = pegar_usuario() +' conectado'
       bloqueio.display ='none'
-
+      pegar_usuario()
     } else {
       let lnk_add_new_device = document.getElementById('lnk_devices')
       let bt_out=  document.getElementById('sugest_logout').style
@@ -37,16 +38,26 @@ function verificando_lnk(){
 
 
 
-function pegar_usuario(){
+function pegar_usuario() {
   const user = firebase.auth().currentUser;
   let email
-if (user !== null) {
+  let user_list
+  let usuario
 
-  email = user.email;
- 
-  
-}
-return email
+  let status_loguin =  document.getElementById('sugest_loguin')
+
+  let userName = firebase.database().ref('User_Emails');
+  if (user !== null) {
+    email = user.email
+    userName.on('child_added', function (snapshot) {
+      user_list = snapshot.val()
+      if(user_list['email']==email){
+      status_loguin.innerText  = user_list['usuario'] +' Is connected'
+      }else{
+       console.log(conectando)
+      }
+    });
+  }
 }
 
 function logar() {
@@ -100,6 +111,8 @@ function cancelar_loguin() {
 } 
 
 
+
+//função para deslogar do sistema
 function logout(){
 
   firebase.auth().signOut().then(() => {

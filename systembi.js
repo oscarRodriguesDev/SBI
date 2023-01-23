@@ -90,6 +90,9 @@ function islogado() {
 }
 
 
+
+
+
 //função para escrita das configurações no banco de dados
 function write_config(value) {
    var newMessageRef = bank_config.push();
@@ -572,6 +575,7 @@ function init_read() {
    leitura_data()
    islogado()
    read_config()
+  
 }
 
 

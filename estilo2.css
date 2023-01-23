@@ -49,8 +49,8 @@
 }
 
 
-/*area de trabalho*/
 
+/*area de trabalho*/
 .desktop {
 	position: fixed;
 	background-size: 100%;
@@ -61,10 +61,9 @@
 	left: 16%;
 	height: 79.7%;
 	text-align: center;
-
-
-
 }
+
+
 
 .bar_desk {
 	position: fixed;
@@ -78,6 +77,8 @@
 	left: -0.5%;
 	right: 20%;
 }
+
+
 
 .bar_desk #tit_form {
 	font-size: 200%;
@@ -120,58 +121,51 @@ position:fixed;
 background-color:white;
 width: 99%;
 left:auto;
-height:40%;
+height:50%;
 bottom:50%;
 
 }
-#loguin_title h5{
-position:fixed;
-top:21%;
-right:35%;
-font-weight: bold;
-font-size:200%;
-}
+
 #loguin_title {
 	position: fixed;
-	left:0.1%;
-	width:70.3%;
-	bottom:62%;
-	font-weight: bold;
-	margin-bottom: 10px;
-	height:7%;
+	left: 1%;
+	top:35.4%;
+	background-color: #48D1CC;
+	padding-left:43%;
+	padding-right:41.5%;
+	padding-bottom:6%;
+	padding-top:6%;
+	
+	
 }
 
-
-#word_mail {
-
-	position: fixed;
-	font-size:150%;
-	left:40%;
-	display:block;
-	font-weight: bold;
-}
-
-#word_pass {
-	position: fixed;
-	font-size:150%;
-	top:49%;
-	left:40%;
-	display:block;
-	font-weight: bold;
+#loguin_pass{
+	position:fixed;
+	bottom:35%;
+	left:42.5%;	
 }
 
 #senha{
 	position:fixed;
 	font-size: 150%;
-	top:53%;
+	top:65%;
 	left:1%;
 	width:96%;
 	height:8%;
 	display:block;
 	font-weight: bold;
-   
-	
+
 }
+
+
+
+#loguin_email{
+	position:fixed;
+	bottom:47.5%;
+	left:42.5%;	
+}
+
+
 
 #user{
 	position:fixed;
@@ -179,18 +173,24 @@ font-size:200%;
 	left:1%;
 	width:96%;
 	height:7%;
-	top:41%;
-	display:block;
+	top:53%;
 	font-weight: bold;
+	display:block;
 }
+
+
+
+
 
 #ex input{
 	display:none;
 }
+
+
 #bt_log input{
 	position: fixed;
 	font-size: 150%;
-	top:70%;
+	top:77%;
 	left:30%;
 	padding:1%;
 	width:40%;
@@ -199,15 +199,8 @@ font-size:200%;
 	font-weight: bold;
 	height:40px;
 }
-#bt_after input{
-	position: fixed;
-	font-size: 150%;
-	top:70%;
-	left:55%;
-	display: none;
-	font-weight: bold;
-	
-}
+
+
 
 #loguin_rec {
 	display: none;
