@@ -23,8 +23,13 @@ como proximo estagio vou começar a fazer a integração com o banco de dados, g
 - tambem estarei implementando a opção de visualização do estoque, porem essa opção será visivel apenas para usuarios desktop
 
 30/12/2022
-A parte do projeto voltada ao controle de estque está adiantada, já e possivel cadastrar e recuperar os dados que estão no  banco de dados firebase, me preparo agora para gerenciar o controle de acesso ao sistema.
+A parte do projeto voltada ao controle de estque está adiantada, já e possivel cadastrar e recuperar 
+os dados que estão no  banco de dados firebase, me preparo agora para gerenciar o controle de acesso ao 
+sistema.
 
+24-01-2022
+A parte do sistema destinada ao controle de estoque está sendo finalizada, apos correção de alguns erros, 
+ela sera disponibilizada para testes para detecção de erros que possam passar despercebidos
 
 //O que esta por vir
 -ao termino do app de controle de estoque estarei implementando o controle de catracas que visa gerenciar a forma como a informação sobre valor, acertos, e pedidos de manutenções das mesmas serão visualizados, alem disso 

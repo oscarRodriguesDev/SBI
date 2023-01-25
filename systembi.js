@@ -1,22 +1,50 @@
 /*função para bloqueio dos recursos ainda não disponibilizados*/
 
 function default_event() {
-  alert('indisponivel no momento')
+   alert('indisponivel no momento')
 
 }
-function msg_negative(){
-   if(!logado){
+
+
+var permissão = false
+var message = []
+var lista_banco = [] //lista no estoque
+var status_config = ''
+var lista_estoque = []
+var logado = false
+
+
+
+//vamos fazer a leitura da permissaõ para liberar o recurso ou não, lembrando que de toda a forma 
+//o acesso não é liberado, essa configuração é apenas em termos de acessibilidade
+
+function ispermission() {
+   let userName = firebase.database().ref('User_Emails');
+   const user = firebase.auth().currentUser;
+   let type = ''
+   userName.on('child_added', function (snapshot) {
+      type = snapshot.val()
+
+
+      if (user.email == type['email'] && (type['permission'] == 'master' || type['permission'] == 'admin')) {
+         permissão = true
+      }
+   });
+}
+
+
+
+function msg_negative() {
+   ispermission()
+   if (logado == false || permissão == false) {
       alert('Usuário não autorizado!')
+      let lnk_add_new_device = document.getElementById('lnk_devices')
+      lnk_add_new_device.href = '#'
    }
 }
 
 
 
-var message = []
-var lista_banco = [] //lista no estoque
-var status_config = ''
-var lista_estoque=[]
-var logado = false
 
 
 /*Elementos necessarios para apresentação de dados do banco*/
@@ -84,7 +112,7 @@ function islogado() {
          logado = true
       } else {
          //deslogado
-         logado = false   
+         logado = false
       }
    });
 }
@@ -121,13 +149,13 @@ function read_config() {
 
 /*vamos fazer a leitura do que tem no banco de dados logo aqui mesmo*/
 function read_to_select() {
-  
+
    let select = document.getElementById('eqpms')
    bank_equipamentos.on('child_added', function (snapshot) {
       let option = document.createElement('option')
       option.text = snapshot.val();
       select.appendChild(option)
-     
+
    });
 
 }
@@ -135,48 +163,49 @@ function read_to_select() {
 
 
 function contador(classe) {
-   if(!logado){
+   if (!logado) {
       alert('Usuário não autorizado!')
-   }else{
-   span_saida.display = 'none'
-   /*separando os itens do banco*/
-   lista_banco = []
-   leitura_data()
-   let all = []
-   let total = [['Equipamento', 'Quantidade']]
-   lista_banco.forEach(eqp => {
-      if (eqp[4] == 'Entrada') {
-         all.push(eqp[0])
+   } else {
+      span_saida.display = 'none'
+      /*separando os itens do banco*/
+      lista_banco = []
+      leitura_data()
+      let all = []
+      let total = [['Equipamento', 'Quantidade']]
+      lista_banco.forEach(eqp => {
+         if (eqp[4] == 'Entrada') {
+            all.push(eqp[0])
+         }
+      });
+
+      //conta e coloca em um objeto com nome e quantidade
+
+
+      var counts = {};
+      all.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+
+      for (const key in counts) {
+         if (counts.hasOwnProperty.call(counts, key)) {
+            const valor = counts[key];
+            total.push([key, counts[key]])
+
+         }
       }
-   });
-
-   //conta e coloca em um objeto com nome e quantidade
-
-
-   var counts = {};
-   all.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
-
-   for (const key in counts) {
-      if (counts.hasOwnProperty.call(counts, key)) {
-         const valor = counts[key];
-         total.push([key, counts[key]])
-
-      }
+      /*mudando o layout para apresentação dos totais*/
+      let table_total = criarTabela(total);
+      let tablettl_style = table_total.style
+      tablettl_style.textAlign = 'center'
+      span_all.appendChild(table_total)
+      let span_geral = document.getElementById('conteudo_estoque').style
+      span_geral.display = 'none'
+      estoque = document.getElementById(classe).style;//estoque
+      controle = document.querySelector('.formulario1').style;
+      estoque.display = 'block'
+      controle.display = 'none'
+      span_totais.display = 'block'
+      span_entrada.display = 'none'
    }
-   /*mudando o layout para apresentação dos totais*/
-   let table_total = criarTabela(total);
-   let tablettl_style = table_total.style
-   tablettl_style.textAlign = 'center'
-   span_all.appendChild(table_total)
-   let span_geral = document.getElementById('conteudo_estoque').style
-   span_geral.display = 'none'
-   estoque = document.getElementById(classe).style;//estoque
-   controle = document.querySelector('.formulario1').style;
-   estoque.display = 'block'
-   controle.display = 'none'
-   span_totais.display = 'block'
-   span_entrada.display = 'none'
-}}
+}
 
 
 
@@ -199,7 +228,7 @@ function pega_data(rotina) { //se é entrada ou saida
    }
 
    //data
- 
+
    var data = document.getElementById("data");
    var dat = data.value;
    if (dat == '') {
@@ -208,7 +237,17 @@ function pega_data(rotina) { //se é entrada ou saida
 
 
    //matricula
-   matricula = prompt("Para finalizar digite seu nome:")
+   let usuarios = firebase.database().ref('User_Emails'); //nome vindo do banco
+   const user_loguin = firebase.auth().currentUser;//nome vindo do loguin
+   usuarios.on('child_added', function (snapshot) {
+      let dados = snapshot.val()
+      if (dados['email'] == user_loguin.email) {
+         matricula = dados['usuario']
+      }
+   });
+
+
+
 
    if (matricula == '') {
       permissão = 4
@@ -221,7 +260,7 @@ function pega_data(rotina) { //se é entrada ou saida
    switch (permissão) {
       case 0:
          save_equipamento(maq, ser, dat, matricula, rotina)
-
+         document.location.reload(true);
 
          break
       case 1:
@@ -243,12 +282,9 @@ function pega_data(rotina) { //se é entrada ou saida
          alert('Ocorreu um erro desconhecido, tente novamente!')
          break
    }
-   document.location.reload(true);
+
 }
 /*fim dos dados que serão gravados*/
-
-
-
 
 
 
@@ -265,15 +301,15 @@ function verifica_duplicata(lista, serial, tipo) {
          obs = true
          if (tipo == 'Entrada') {
             alert('Aparentemente outro usuario ja adcionou esse equipamento antes,\n confira o numero serial antes de tentar novamente')
-         } else if(tipo=='Saida') {
-           
+         } else if (tipo == 'Saida') {
+
             alert('Esse equipamento não está no estoque, confira o numero serial antes de tentar novamente!')
-         }else{
+         } else {
             alert('Não consegui realizar o procedimento solicitado contate o suporte!')
          }
       }
-      }
-   
+   }
+
 
    if (obs) {
       existe = true
@@ -286,42 +322,52 @@ function verifica_duplicata(lista, serial, tipo) {
 
 /*Função para salvar os dados no Firebase */
 function save_equipamento(maq, ser, dat, reg, tipo) {
-   span_geral.display = 'none'
-   leitura_data()
-   let status = read_config()
-   var newMessageRef = bank_enter.push();
-   var eqm = [maq, ser, dat, reg, tipo]
-   let exists = verifica_duplicata(lista_banco, ser, tipo)
-   /*ação caso exista ou não*/
-   if (exists) {
-      //nada
+   if (!logado) {
+      alert('Faça loguin antes de acessar esse recurso!')
    } else {
-      if (status == 'init') {
-         newMessageRef.set(
-            eqm
-         );
-         if(tipo=='Saida'){
-            del_if_exit(ser)
-         }
 
-       //por enquanto vou somente salvar nessa lista, futuramente sera a lista de historicos de retirada mostrada
-       //ao usuario so vai executar se o tipo for (*Saida)
-    
-         clear_all(tipo)
-         informa_atualização()
+      span_geral.display = 'none'
+      leitura_data()
+      let status = read_config()
+      var newMessageRef = bank_enter.push();
+      var eqm = [maq, ser, dat, reg, tipo]
+      let exists = verifica_duplicata(lista_banco, ser, tipo)
+      let in_banck = false;
+      if (lista_banco.includes(ser) && tipo == 'Saida') {
+         alert('Esse equipamento, não existe ou ja foi retirado, \n verifique o numero serial e tente novamente! ')
       } else {
-       
-         if (logado == true) {
-            head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+         /*ação caso exista ou não*/
+         if (exists) {
+            //nada
+         } else {
+            if (status == 'init') {
+               newMessageRef.set(
+                  eqm
+               );
+               if (tipo == 'Saida') {
+                  del_if_exit(ser)
+               }
+
+               //por enquanto vou somente salvar nessa lista, futuramente sera a lista de historicos de retirada mostrada
+               //ao usuario so vai executar se o tipo for (*Saida)
+
+               clear_all(tipo)
+               informa_atualização(reg + ' acabou de realizar uma ' + tipo + ' em um(a) ' + maq + ' no estoque')
+            } else {
+
+               if (logado == true) {
+                  head_generator(['equipamento', 'Serial', 'Data', 'Responsavel', 'Transação'], maq, ser, dat, reg, tipo)
+               }
+
+               else {
+                  alert('Procure um adminstrador do sistema!')
+                  clear_all(tipo)
+
+               }
+            }
          }
 
-         else {
-            alert('Procure um adminstrador do sistema!')
-            clear_all(tipo)
-
-         }
       }
-
    }
 }
 /*Fim da função para salvar dados no firebase*/
@@ -334,7 +380,7 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
 /*Função para salvar o cabeçalho da tabela no banco de dados*/
 function head_generator(heads, maq, ser, dat, reg, tipo) {
    var eqm = [maq, ser, dat, reg, tipo]
-  
+
    var newMessageRef = bank_enter.push();
    newMessageRef.set(
       heads
@@ -371,7 +417,7 @@ function leitura_data() {
    lista_banco = []
    bank_enter.on('child_added', function (snapshot) {
       lista_banco.push(snapshot.val());
-      
+
    });
 }
 /*Fim da função para leitura de dados no firebase*/
@@ -492,18 +538,18 @@ function criarTabela(conteudo) {
 
 /*função utilizada para recolher apenas as saidas de equipamentos*/
 function apenas_saidas() {
-   if(!logado){
-   alert('Usuário não autorizado!')
-   }else{
-   leitura_data()
-   let lista_saida = []
-   lista_saida = [['Data', 'Equipamento', 'Serial']]
-   lista_banco.forEach(element => {
-      if (element[4] == 'Saida') {
-         lista_saida.push([element[2], element[0], element[1]])
-      }
-   });
-   return lista_saida
+   if (!logado) {
+      alert('Usuário não autorizado!')
+   } else {
+      leitura_data()
+      let lista_saida = []
+      lista_saida = [['Data', 'Equipamento', 'Serial']]
+      lista_banco.forEach(element => {
+         if (element[4] == 'Saida') {
+            lista_saida.push([element[2], element[0], element[1]])
+         }
+      });
+      return lista_saida
    }
 }
 
@@ -531,20 +577,20 @@ function apresenta_saidas(classe) {
 
 /*função utilizada para recolher apenas as entradas de equipamentos*/
 function apenas_entradas() {
-  if(!logado){
-   alert('Usuário não autorizado')
-  }else{
-   leitura_data()
-   let lista_entrada = []
-   lista_entrada = [['Data', 'Equipamento', 'Serial']]
-   lista_banco.forEach(element => {
-      if (element[4] == 'Entrada') {
-         lista_entrada.push([element[2], element[0], element[1]])
-      }
-   });
-   return lista_entrada
+   if (!logado) {
+      alert('Usuário não autorizado')
+   } else {
+      leitura_data()
+      let lista_entrada = []
+      lista_entrada = [['Data', 'Equipamento', 'Serial']]
+      lista_banco.forEach(element => {
+         if (element[4] == 'Entrada') {
+            lista_entrada.push([element[2], element[0], element[1]])
+         }
+      });
+      return lista_entrada
+   }
 }
-  }
 
 
 
@@ -575,7 +621,7 @@ function init_read() {
    leitura_data()
    islogado()
    read_config()
-  
+
 }
 
 
@@ -583,39 +629,39 @@ function init_read() {
 
 
 //rotina de verificação de novos equipamentos no banco
-function informa_atualização() {
-   alert('Sucesso!')
+function informa_atualização(mensagem) {
+   alert(mensagem)
 }
 
 
 
 
 //metodo para deletar equipamentos do banco
-function del_if_exit(serial){
-   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-    var key = childSnapshot.key;
-    var value = childSnapshot.val();
-    //antes disso salvar lista para saida com duração limitada
-   if(value[1]==serial&&value[4]=='Entrada'){
-      firebase.database().ref('Estoque Bilhetagem Serramar/'+key).remove()
-   }
-  });
-});
+function del_if_exit(serial) {
+   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+         var key = childSnapshot.key;
+         var value = childSnapshot.val();
+         //antes disso salvar lista para saida com duração limitada
+         if (value[1] == serial && value[4] == 'Entrada') {
+            firebase.database().ref('Estoque Bilhetagem Serramar/' + key).remove()
+         }
+      });
+   });
 }
 
 
 //função para apagar o historico de saidas
-function clear_exit_history(){
-   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var key = childSnapshot.key;
-        var value = childSnapshot.val();
-        //antes disso salvar lista para saida com duração limitada
-       if(value[4]=='Saida'){
-          firebase.database().ref('Estoque Bilhetagem Serramar/'+key).remove()
-       }
+function clear_exit_history() {
+   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+         var key = childSnapshot.key;
+         var value = childSnapshot.val();
+         //antes disso salvar lista para saida com duração limitada
+         if (value[4] == 'Saida') {
+            firebase.database().ref('Estoque Bilhetagem Serramar/' + key).remove()
+         }
       });
-    });
-    location.reload()
+   });
+   location.reload()
 }

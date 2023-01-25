@@ -5,7 +5,8 @@ Coisas necessarias para a primeria entrega do sbi
 2- implemtar as opções "o que deseja fazer na tela home do sistema"
 
 3- preciso arrumar uma forma de quando o equipamento for inserido pelo aplicativo, ja atualize automaticamente, 
-hoje quando isso acontece, o equipamento aparece 3 vezes
+hoje quando isso acontece, o equipamento aparece 3 vezes(uma ideia que tive é ficar analisando um arquivo 
+tempo todo para ver se ele altera e caso aconteça seja exibido um botão na tela pra eu atualizar meu app)
 
 4- colocar umas imagens sugestivas na tela home, futuramente o usuario poderá inserir ele mesmo as imagens
 
@@ -17,12 +18,18 @@ commit, para evitar que modificações parem o sistema
 6-Fazer um script de tutorial para configuração do sistema para novos usuarios
 
 
-9- fazer loguin usando o nome de usuario, apresentar o nome de usuario no local e na hora de salvar
-as transações no banco
+8-quando realizar logout preciso utilizar um confirm para o caso do usuario se arrepender de sair
 
-10-mudar a forma como o usuario é identificado para realizar entradas e saidas, atualmente ele pergunta o nome,
-mas ele ira pegar a infomação pelo loguin 
-11- concertar o layout da telinha de loguin
+9- em uma versão futura utilizar uma tela de transição para logar e deslogar, talvez seja o caso de criar uma
+tela de loguin
+
+10- criar o banco da serramar antes de liberar a versão de testes
+
+11 pesquisar como posso colocar esse app na amazon sem precisar pagar
+
+12- pensar sobre o que seria melhor, um banco de dados para todas as empresas ou um banco de dados para
+cada empresa, lembrando que eu estaria no comando do banco de todas elas
+
 
 
 

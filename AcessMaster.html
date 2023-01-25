@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="acess_SBI_master.js"></script>
+    <title>SBI Acess Master</title>
+</head>
+
+<body>
+    <div id="pagina_home">
+        <h3>Acesso restrito à desktop</h3>
+    </div>
+    <div id="pagina_home_option">
+        <header>
+            <h1>Acesso Master</h1>
+        </header>
+        <form>
+            <label for="e-mail">Digite o e-mail:</label><br>
+            <input id="email_creator" type="text"><br>
+            <label for="senha"> digite uma senha:</label><br>
+            <input id="senha_creator" type="text"><br>
+            <label for="senha_bis"> Repita a senha:</label><br>
+            <input id="replaypass" type="text" onblur="verificação()" onfocus="focus_gain()"><br>
+            
+            <script>
+
+                //uma rapida verificação se o valores de senha correspondem
+                function verificação() {
+                    let senha = document.getElementById('senha_creator')
+                    let senha_rep = document.getElementById('replaypass')
+                    let senha_style = document.getElementById('replaypass').style
+                    if (senha_rep.value != senha.value) {
+                        console.log('valor das senhas não correspondem')
+                        senha_style.color = 'red'
+                        senha_style.fontWeight = '700'
+                    }else{
+                        senha_style.color = 'black'  
+                        senha_style.fontWeight = '100'
+                    }
+                }
+                
+                
+                //evento quando ganha foco  
+                function focus_gain(){
+                    let senha_rep = document.getElementById('replaypass')
+                    senha_rep.value = ''
+                    
+                }
+            </script>
+            <label for="usuario">Crie um nome de usuario:</label><br>
+            <input id="user_creator" type="text"><br>
+            <input type="button" value="Associar Novo Usuario" onclick="create_user()"><br>
+            <input type="button" value="cancelar" onclick=cancel_create()>
+        </form>
+    </div>
+</body>
+
+
+</html>

@@ -8,10 +8,9 @@ function verifica_loguin() {
   firebase.auth().onAuthStateChanged(function(user) {
     let bloqueio = document.querySelector(".loguin_routine").style
     let style_log =  document.getElementById('sugest_loguin').style
+    let logon =  document.getElementById('sugest_loguin')
     
     if (user) {
-     //let status_loguin =  document.getElementById('sugest_loguin')
-      //status_loguin.innerText  = pegar_usuario() +' conectado'
       bloqueio.display ='none'
       pegar_usuario()
     } else {
@@ -38,31 +37,27 @@ function verificando_lnk(){
 
 
 
-function pegar_usuario() {
+function pegar_usuario(){
   const user = firebase.auth().currentUser;
   let email
   let user_list
-  let usuario
-
   let status_loguin =  document.getElementById('sugest_loguin')
-
   let userName = firebase.database().ref('User_Emails');
   if (user !== null) {
     email = user.email
-    userName.on('child_added', function (snapshot) {
+    userName.on('child_added', function (snapshot){
       user_list = snapshot.val()
       if(user_list['email']==email){
-      status_loguin.innerText  = user_list['usuario'] +' Is connected'
+      status_loguin.innerText  = 'Ola '+ user_list['usuario']
+      status_loguin.setAttribute('onclick',null)
       }else{
-       console.log(conectando)
+       //console.log('conectando')
       }
     });
   }
 }
 
-function logar() {
- 
-  
+function logar(){
     let bloqueio = document.querySelector(".loguin_routine").style
     var loguin = document.getElementById('user').value
     var senha = document.getElementById('senha').value
@@ -83,7 +78,6 @@ function logar() {
     console.log(error)
     alert('Não foi possivel efetuar o Loguin, usuario ou senha incorretos, tente novamente!')
   });
-  
 }
 
 
@@ -114,7 +108,6 @@ function cancelar_loguin() {
 
 //função para deslogar do sistema
 function logout(){
-
   firebase.auth().signOut().then(() => {
     alert('Usuario foi desconectado')
     let bt_out=  document.getElementById('sugest_logout').style
@@ -122,12 +115,9 @@ function logout(){
     let status_loguin =  document.getElementById('sugest_loguin')
     status_loguin.innerText  = 'Logar Para ter total acesso?'
     window.location.reload()
-
-
   }).catch((error) => {
     alert('Ocorreu um erro ao tentar sair!')
-  });
-  
+  });  
 }
 
 
