@@ -30,6 +30,12 @@ tela de loguin
 12- pensar sobre o que seria melhor, um banco de dados para todas as empresas ou um banco de dados para
 cada empresa, lembrando que eu estaria no comando do banco de todas elas
 
+13-verificar e corrigir layout que não estiver legal
+
+14- ao dar saida.em um ewuipamento caso ele nao esteja nem na entrada e nem na saida o mesmo da saida como se o equipamento existisse no estoqur
+
+15- a data nao volta depois que eu salvo o equipamento no app movel
+
 
 
 

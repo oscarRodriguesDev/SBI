@@ -1,0 +1,313 @@
+/*estilos css*/
+/*pagina home*/
+#pagina_home {
+	position: fixed;
+	top:40%;
+	left:25%;
+	display: block;
+	color: white;
+	text-align: center;
+}
+
+#pagina_home_option {
+	display: none;
+}
+
+/*pagina home*/
+
+/*menu lateral*/
+
+.menu {
+
+	display: none;
+}
+
+
+/*fim das opções do menu*/
+
+/*cabeçalho*/
+.barsup {
+
+	display: none;
+}
+
+
+
+/*rodape*/
+.rodape {
+
+	display: none;
+}
+
+
+
+
+/*informações*/
+.info {
+
+	display: none;
+}
+
+
+
+/*area de trabalho*/
+.desktop {
+	position: fixed;
+	background-size: 100%;
+	opacity: 0.85;
+	background-color: white;
+	width: 61.9%;
+	top: 100%;
+	left: 16%;
+	height: 79.7%;
+	text-align: center;
+}
+
+
+
+.bar_desk {
+	position: fixed;
+	background-color: #A52A2A;
+	background: linear-gradient(-0.1turn, #FF4500, #191970, #48D1CC, #FF4500);
+	border: 3px solid yelhow;
+	color: white;
+	width: 101%;
+	height: 9%;
+	top: 5%;
+	left: -0.5%;
+	right: 20%;
+}
+
+
+
+.bar_desk #tit_form {
+	font-size: 200%;
+	font-weight: bold;
+}
+
+
+/*fim dos estilos da area de trabalho*/
+
+/*estilos da telinha de loguin*/
+.loguin_routine {
+
+	display: block;
+	
+}
+
+.protection {
+	display: block;
+	opacity:0.8;
+
+}
+
+ #sugest_loguin{
+	display:none;
+}
+
+
+#sugest_logout{
+	position: fixed;
+	color:white;
+	top:95%;
+	left:auto;
+	font-size:130%;
+	font-weight:bold;
+
+}
+
+.loguin {
+position:fixed;
+background-color:white;
+width: 99%;
+left:auto;
+height:50%;
+bottom:50%;
+
+}
+
+#loguin_title {
+	position: fixed;
+	left: 1%;
+	top:35.4%;
+	background-color: #48D1CC;
+	padding-left:43%;
+	padding-right:41.5%;
+	padding-bottom:6%;
+	padding-top:6%;
+	
+	
+}
+
+#loguin_pass{
+	position:fixed;
+	bottom:35%;
+	left:42.5%;	
+}
+
+#senha{
+	position:fixed;
+	font-size: 150%;
+	top:65%;
+	left:1%;
+	width:96%;
+	height:8%;
+	display:block;
+	font-weight: bold;
+
+}
+
+
+
+#loguin_email{
+	position:fixed;
+	bottom:47.5%;
+	left:42.5%;	
+}
+
+
+
+#user{
+	position:fixed;
+	font-size: 150%;
+	left:1%;
+	width:96%;
+	height:7%;
+	top:53%;
+	font-weight: bold;
+	display:block;
+}
+
+
+
+
+
+#ex input{
+	display:none;
+}
+
+
+#bt_log input{
+	position: fixed;
+	font-size: 150%;
+	top:77%;
+	left:30%;
+	padding:1%;
+	width:40%;
+	display: block;
+	border-radius:10px;
+	font-weight: bold;
+	height:40px;
+}
+
+
+
+#loguin_rec {
+	display: none;
+}
+
+/*fim dos estilos da telinha de loguin*/
+
+/*estilo do formulario do controle de estoque*/
+
+
+.formulario1 label {
+	position: fixed;
+	color: #F0FFFF;
+	font-size: 100%;
+	font-weight: bold;
+	left: 1%;
+	border: 2px solid white;
+	height: -5%;
+	width: 96%;
+	padding-top: 2%;
+	text-align: left;
+
+}
+
+.formulario1 #label1 {
+
+	top: 31.6%;
+	border-radius: 3%;
+}
+
+.formulario1 #label2 {
+	top: 49.7%;
+	border-radius: 3%;
+
+}
+
+.formulario1 #label3 {
+
+	top: 68.4%;
+	border-radius: 3%;
+
+
+
+}
+
+.formulario1 #eqpms {
+	position: fixed;
+	font-size: 120%;
+	left: 1%;
+	top: 35.5%;
+	width: 97%;
+	height: 7%;
+	border-radius: 3%;
+
+
+}
+
+.formulario1 #serial {
+	position: fixed;
+	font-size: 120%;
+	left: 1%;
+	top: 53.5%;
+	width: 95.5%;
+	height: 7%;
+	border-radius: 3%;
+
+}
+
+.formulario1 #data {
+	position: fixed;
+	font-size: 120%;
+	left: 1%;
+	top: 72.3%;
+	width: 95.5%;
+	height: 7%;
+	border-radius: 3%;
+
+
+}
+
+.formulario1 .buttons {
+	position: fixed;
+	top: 85%;
+	left: 11%;
+
+}
+
+.buttons #entrada {
+	font-size: 130%;
+	left: 10%;
+	border-radius: 3%;
+}
+
+.buttons #saida {
+	font-size: 130%;
+	left: 50%;
+	border-radius: 3%;
+
+}
+
+/*fim do estilo do formulario do controle de estoque*/
+
+/*body*/
+body {
+	position: fixed;
+	text-align: center;
+	background-color: black;
+
+
+}

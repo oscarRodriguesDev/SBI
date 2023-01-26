@@ -3,10 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
-	
-	<title>SBI</title>
+	<link rel="shortcut icon" href="./res/ico.png" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="./css_test/estilo.css">
+	<link rel="stylesheet" href="./css_test/estilo2.css" media="screen and (max-width: 480px)" />
+
+
+	<title>Controle de estoque</title>
 </head>
 <body onload="init_read()">
 	
@@ -83,6 +85,10 @@
 		<section id="estoque">
 			<span id="conteudo_estoque">
 				<h3>Todas as transações</h3>
+				<span id='atualização'><p>Novos equipamentos foram adcionados</p>
+				<input type="button" value="Atualizar Estoque" id ="btn_atualização" onclick="atualizar_estoque()">
+				</span>
+
 			</span>
 			<span id="conteudo_saida">
 				<h3>Saidas de equipamentos</h3>
@@ -112,7 +118,7 @@
 	
 	
 	<section class="loguin_routine">
-		<div class="protection">proteção</div>
+		<div class="protection"></div>
 		<!--Tela de loguin para que o usuario possa usar 100% do sistema
 	ficara invisivel e será apresentada no carregamento da pagina, quando o usuario tentar acessar um recurso pago ou quando o usuario solicitar entrada-->
 
@@ -134,7 +140,8 @@
 	<!--aqui termina a rotina obrigatoria de loguin-->
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
 	</script>
-	<script src="systembi.js"></script>
-	<script src="systembi_loguin.js"></script>
+	<script src="./program_test/systembi.js"></script>
+	<script src="./program_test/systembi_loguin.js"></script>
+	
 </body>
 </html>
