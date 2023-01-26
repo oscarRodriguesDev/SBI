@@ -4,16 +4,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="./res/ico.png" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="./css_test/estilo.css">
+	<link rel="stylesheet" type="text/css" href="./css_test/css_home.css">
+	<link rel="stylesheet" href="./css_test/estilo2.css" media="screen and (max-width: 480px)" />
 
-	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<link rel="stylesheet" href="estilo2.css" media="screen and (max-width: 480px)" />
-	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
-	<script src="systembi_home.js"></script>
-	<script src="systembi_loguin.js"></script> <!--script especifico para a rotina de loguin-->
 	
-	<script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="./program_test/systembi_home.js"></script>
+	<script src="./program_test/systembi_loguin.js"></script> <!--script especifico para a rotina de loguin-->
+	
 
-	<title>SBI</title>
+	<title>Sistema Bilhetagem Inteligente</title>
 </head>
 
 <body onload="verifica_loguin()">
@@ -57,9 +59,23 @@ gerenciados pelo sistema como, falta de produto no estoque, retiradas suspeitas,
 			<ul>
 				<!--Opções são exclusivas da pagina home, caso o usuario ainda não 
 			tenha acesso ao sistema, se estiver deslogado por exemplo-->
-				<li onclick="default_event()">O que é o SBI ?</li>
-				<li onclick="default_event()">Como usar o sistema ?</li>
-				<li onclick="default_event()">Quero adquirir o SBI!</li>
+				<li onclick="open_text_p1()">O que é o SBI ?
+				<p id ='pragrafo_sbi1'>SBI é um sistema voltado para controle de atividades relacionadas à setor de Bilhetagem eletronica
+					muito comum em sistemas de transporte publico, é um sistema que procura resolver os principais problemas
+					relacionados à area, como controle de catraca, gerenciamento dos principais problemas tecnicos encontrados
+				</p></li>
+				<li onclick="open_text_p2()">Como usar o sistema ?
+				<p id ='pragrafo_sbi2'>O sistema é simples e intuitivo, mas para o conforto e usabilidade, disponibilizamos um manual 
+					em pdf onde todas as duvidas com relação ao uso poderão ser sanadas, caso necessario o usuário poderá
+					entrar em contato conosco atraves dos contatos disponibilizados no proprio sistema e no manual, a unica observação 
+					a ser feita é que a unica forma de utilizar o sistema e tendo um usuario e senha para loguin
+				</p>
+				</li>
+				<li onclick="open_text_p3()">Quero adquirir o SBI!
+				<p id ='pragrafo_sbi3'>Você poderá adquirir o SBI entrando em contato  com nossa equipe, os nossos meios de contato estão disponiveis aqui no site e 
+					tambem no manual do sistema ao adquirir esse sistema você, terá direito ao uso do mesmo de forma Trial por até tres meses
+				</p>
+				</li>
 				<!--adcionar mais perguntas ao longo do desenvolvimento-->
 
 			</ul>

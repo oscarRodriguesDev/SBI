@@ -108,8 +108,10 @@ function cancelar_loguin() {
 
 //função para deslogar do sistema
 function logout(){
+  let escolha = confirm('Deseja mesmo sair?')
+  if(escolha){
   firebase.auth().signOut().then(() => {
-    alert('Usuario foi desconectado')
+    alert('Até a proxima!')
     let bt_out=  document.getElementById('sugest_logout').style
     bt_out.display =  'none'
     let status_loguin =  document.getElementById('sugest_loguin')
@@ -118,6 +120,10 @@ function logout(){
   }).catch((error) => {
     alert('Ocorreu um erro ao tentar sair!')
   });  
+ 
+}else{
+  alert('Usuário ainda está logado!')
+}
 }
 
 
