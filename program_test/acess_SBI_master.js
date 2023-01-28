@@ -17,7 +17,7 @@ firebase.initializeApp(firebaseConfig);
 const provider = new firebase.auth.GoogleAuthProvider();
 
 //preciso de uma banco de dados para associar o email com usuarios
-var bd_associate_user = firebase.database().ref('User_Emails');
+var bd_associate_user = firebase.database().ref('SBI/User_Emails');
 
 
 //preciso criar o novo usuario e ja associar no banco de dados o usuario e emais cadastrado
@@ -32,7 +32,7 @@ function create_user() {
     let senha = document.getElementById('senha_creator').value
     //criação do loguin:
 
-    criar_loguin(email, senha)
+    criar_loguin2(email, senha)
     if (!noerror) {
         console.log('Não foi possivel criar loguin, pois houve um problema ao criar o usuario informado')
 

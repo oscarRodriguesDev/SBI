@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 /*banco de opções de equipamento no firebase*/
 var bank_equipamentos = firebase.database()
-   .ref('Equipamentos');
+   .ref('SBI/Equipamentos');
 /*Fim das configurações do firebase*/
 
 //de inicio vamos ter uma lista que será adcionada de forma dinamica ao select da pagina

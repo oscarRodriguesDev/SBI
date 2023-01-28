@@ -20,7 +20,7 @@ var tamanho_1
 //o acesso não é liberado, essa configuração é apenas em termos de acessibilidade
 
 function ispermission() {
-   let userName = firebase.database().ref('User_Emails');
+   let userName = firebase.database().ref('SBI/User_Emails');
    const user = firebase.auth().currentUser;
    let type = ''
    userName.on('child_added', function (snapshot) {
@@ -90,16 +90,16 @@ firebase.initializeApp(firebaseConfig);
 
 /*banco de opções de equipamento no firebase*/
 var bank_equipamentos = firebase.database()
-   .ref('Equipamentos');
+   .ref('SBI/Equipamentos');
 
 /*banco de entrada estoque no firebase*/
 var bank_enter = firebase.database()
-   .ref('Estoque Bilhetagem Serramar');
+   .ref('SBI/Estoque Bilhetagem Serramar');
 
 
 /*banco para configurações*/
 var bank_config = firebase.database()
-   .ref('SBI_config');
+   .ref('SBI/SBI_config');
 /*Fim das configurações do firebase*/
 
 
@@ -217,7 +217,11 @@ function contador(classe) {
 function pega_data(rotina) { //se é entrada ou saida
    var permissão = 0;
    var select = document.getElementById("eqpms");
+   try{
    var maq = select.options[select.selectedIndex].text;
+   }catch(error){
+      alert('No autorized!')
+   }
    if (maq == '') {
       permissão = 1
    }
@@ -238,7 +242,7 @@ function pega_data(rotina) { //se é entrada ou saida
 
 
    //matricula
-   let usuarios = firebase.database().ref('User_Emails'); //nome vindo do banco
+   let usuarios = firebase.database().ref('SBI/User_Emails'); //nome vindo do banco
    const user_loguin = firebase.auth().currentUser;//nome vindo do loguin
    usuarios.on('child_added', function (snapshot) {
       let dados = snapshot.val()
@@ -319,6 +323,30 @@ function verifica_duplicata(lista, serial, tipo) {
 }
 
 
+ function verifica_in_bank(serial,tipo){
+   let existe =1//de inicio o valor existe
+   if(tipo=='Saida'){
+   for(let i=0;i<lista_banco.length;i++){
+      let device= lista_banco[i]//analiza equipamento por equipamento
+      if(device[1]==serial){
+         existe=1 //existe no banco, pode ser feita a retirada
+       
+         break
+      }else{
+        
+         existe= 0 //não existe no banco não pode ser feita a retirada
+      }
+   }
+   }else{
+      existe=1
+   }
+   
+   return existe
+ }
+ 
+
+
+
 
 
 /*Função para salvar os dados no Firebase */
@@ -334,7 +362,9 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
       var eqm = [maq, ser, dat, reg, tipo]
       let exists = verifica_duplicata(lista_banco, ser, tipo)
       let in_banck = false;
-      if (lista_banco.includes(ser) && tipo == 'Saida'||(tipo=='Saida'&&!lista_banco.includes(ser))) {
+
+   
+      if (verifica_in_bank(ser,tipo)==0) {
          alert('Esse equipamento, não existe ou ja foi retirado, \n verifique o numero serial e tente novamente! ')
       } else {
          /*ação caso exista ou não*/
@@ -347,6 +377,11 @@ function save_equipamento(maq, ser, dat, reg, tipo) {
                );
                if (tipo == 'Saida') {
                   del_if_exit(ser)
+            
+               }
+
+               if (tipo == 'Entrada') {
+                  del_if_enter(ser)
                }
 
                //por enquanto vou somente salvar nessa lista, futuramente sera a lista de historicos de retirada mostrada
@@ -642,33 +677,84 @@ function informa_atualização(mensagem) {
 
 //metodo para deletar equipamentos do banco
 function del_if_exit(serial) {
-   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+   firebase.database().ref('SBI/Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
          var key = childSnapshot.key;
          var value = childSnapshot.val();
          //antes disso salvar lista para saida com duração limitada
          if (value[1] == serial && value[4] == 'Entrada') {
-            firebase.database().ref('Estoque Bilhetagem Serramar/' + key).remove()
+            firebase.database().ref('SBI/Estoque Bilhetagem Serramar/' + key).remove()
          }
       });
    });
 }
 
 
+
+//metodo para deletar equipamentos do banco
+function del_if_enter(serial) {
+   firebase.database().ref('SBI/Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+         var key = childSnapshot.key;
+         var value = childSnapshot.val();
+         //antes disso salvar lista para saida com duração limitada
+         if (value[1] == serial && value[4] == 'Saida') {
+            firebase.database().ref('SBI/Estoque Bilhetagem Serramar/' + key).remove()
+         }
+      });
+   });
+}
+
+
+
 //função para apagar o historico de saidas
 function clear_exit_history() {
-   firebase.database().ref('Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+   firebase.database().ref('SBI/Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
          var key = childSnapshot.key;
          var value = childSnapshot.val();
          //antes disso salvar lista para saida com duração limitada
          if (value[4] == 'Saida') {
-            firebase.database().ref('Estoque Bilhetagem Serramar/' + key).remove()
+            firebase.database().ref('SBI/Estoque Bilhetagem Serramar/' + key).remove()
          }
       });
    });
    location.reload()
 }
+
+
+
+
+
+//função para resetar o estoque
+function reset_history() {
+   //verificar se estou logado como master, somente o master poderá apagar o estoque por inteiro
+   let master= true
+if(master){
+   alert('vai apagar')
+}else{
+   alert('não vai apagar')
+}
+   let opção = confirm('Você está prestes a limpar todo seu estoque, os dados não poderão mais ser recuperados!')
+   if(opção){
+   firebase.database().ref('SBI/Estoque Bilhetagem Serramar').once('value').then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+         var key = childSnapshot.key;
+         var value = childSnapshot.val();
+         //antes disso salvar lista para saida com duração limitada
+         if (value[4] != 'Transação') {
+            //firebase.database().ref('Estoque Bilhetagem Serramar/' + key).remove()
+         }
+      });
+   });
+  // location.reload()
+}else{
+   alert('Os dados foram mantidos!')
+}
+}
+
+
+
 
 //verifica se foi adcionado ou removido um  equipamento a partir de outro dispositivo;
 function verifica_atualização(ref){
@@ -683,16 +769,37 @@ return tamanho
 }
 
 
-
+//rotina de atualização de estoque automatica
 
 function atualizar_estoque(){
 let tamanho_2= verifica_atualização(bank_enter)
 if(tamanho_1==tamanho_2){
   
 }else{
-  let escolha= confirm('atualizar?')
+  let escolha= confirm('Atualizar Estoque')
  if(escolha){
    location.reload()
  }
 }
 }
+
+function pisca() {
+   let botão =document.getElementById('btn_atualização').style
+   botão.backgroundColor='white'
+}
+
+setInterval(function() {
+
+   let tamanho_2= verifica_atualização(bank_enter)
+if(tamanho_1==tamanho_2){
+   let botão =document.getElementById('btn_atualização').style
+   botão.display='none'
+}else{
+   let botão =document.getElementById('btn_atualização').style
+   botão.display='block'
+   botão.backgroundColor='red'
+   setInterval(pisca,1200)
+}
+},850);
+
+//fim da rotina de atualização de estoque automatica

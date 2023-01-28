@@ -27,15 +27,14 @@ A parte do projeto voltada ao controle de estque está adiantada, já e possivel
 os dados que estão no  banco de dados firebase, me preparo agora para gerenciar o controle de acesso ao 
 sistema.
 
-24-01-2022
+24-12-2022
 A parte do sistema destinada ao controle de estoque está sendo finalizada, apos correção de alguns erros, 
 ela sera disponibilizada para testes para detecção de erros que possam passar despercebidos
-
-//O que esta por vir
--ao termino do app de controle de estoque estarei implementando o controle de catracas que visa gerenciar a forma como a informação sobre valor, acertos, e pedidos de manutenções das mesmas serão visualizados, alem disso 
-esta previsto a criação de um app para anotação da catraca que ficara disponivel tambem no sistema dessa forma tirando a necessidade de anotar e logo a seguir ter que passar para o sistema
-
--os carros que rodaram deverão ser importados pelo sistema de bilhetagem, dessa forma o catraqueiro so vai se preocupar em anotar as catracas
+ 28-01-2023
+ Sistema de controle de estoque esta praticamente finalizado entrando na faze de teste
+ possivelmente na proxima semananas, autorizações no banco de dados foram definidas a versão de teste
+ sera a 2.0.0 beta, deverá ser entregue na versão desktop para o usuario admin da empresa
+ 
 
 
 

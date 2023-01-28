@@ -38,16 +38,24 @@ function verificando_lnk(){
 
 
 function pegar_usuario(){
+  //se for master vai escrever a autorização para apagar o estoque
+
+
   const user = firebase.auth().currentUser;
   let email
   let user_list
   let status_loguin =  document.getElementById('sugest_loguin')
-  let userName = firebase.database().ref('User_Emails');
+  let userName = firebase.database().ref('SBI/User_Emails');
   if (user !== null) {
     email = user.email
     userName.on('child_added', function (snapshot){
       user_list = snapshot.val()
       if(user_list['email']==email){
+        
+        let autorization= firebase.database().ref('SBI/SBI_config');
+          let user_auth = {'authorize':'master'}
+          //autorization.set(user_auth)
+        
       status_loguin.innerText  = 'Ola '+ user_list['usuario']
       status_loguin.setAttribute('onclick',null)
       }else{

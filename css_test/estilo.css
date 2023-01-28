@@ -552,11 +552,30 @@ color:rgb(252, 250, 200);
 #totais{
 	display:none;
 }
+
+.menu_estoque{
+	position:fixed;
+	
+}
+
+#btn_atualização{
+	position:fixed;
+	display: none;
+	background-color:white;
+	
+}
+
+
+
+#btn_reset{
+	position:relative;
+	left:15%;
+	top:32.5%;
+}
 /*fim dos estilos da tela de estoque*/
 
-#atualização{
-	display: block;
-}
+
+
 
 /*Estilo para a pagina de insert bank */
 #insert_bank{
