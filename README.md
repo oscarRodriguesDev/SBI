@@ -6,3 +6,6 @@ Nesse repositorio não será aplicado a parte de Backend, evitando que pessoas s
 
 22/11/2022:
 O módulo de gerenciamento de estoque esta sendo implementado
+Esse projeto foi migrado, as etapas mais atualizadas não poderão mais ser atualizadas neste repositorio, a partir de agora o sistema vai continuar sendo desenvol-
+-vido em outra plataforma, para que dados com maior importancia corram riscos de ser expostos.
+A todos que acompanharam deixo o meu mais sincero obrigado.
